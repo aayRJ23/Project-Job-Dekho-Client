@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../../main";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { GiHamburgerMenu } from "react-icons/gi";
+import "./Navbar.css";  // Import the CSS file
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -22,17 +23,18 @@ const Navbar = () => {
       setIsAuthorized(false);
       navigateTo("/login");
     } catch (error) {
-      toast.error(error.response.data.message), setIsAuthorized(true);
+      toast.error(error.response.data.message);
+      setIsAuthorized(true);
     }
   };
 
   return (
-    <nav className={isAuthorized ? "navbarShow" : "navbarHide"}>
-      <div className="container">
-        <div className="logo">
+    <nav className={`navbar ${isAuthorized ? "navbarShow" : "navbarHide"}`}>
+      <div className="navbarContainer">
+        <div className="navbarLogo">
           <img src="/JobZee-logos__white.png" alt="logo" />
         </div>
-        <ul className={!show ? "menu" : "show-menu menu"}>
+        <ul className={`navbarMenu ${show ? "showMenu" : ""}`}>
           <li>
             <Link to={"/"} onClick={() => setShow(false)}>
               HOME
@@ -66,10 +68,13 @@ const Navbar = () => {
           ) : (
             <></>
           )}
-
-          <button onClick={handleLogout}>LOGOUT</button>
+          <li>
+            <button className="logoutButton" onClick={handleLogout}>
+              LOGOUT
+            </button>
+          </li>
         </ul>
-        <div className="hamburger">
+        <div className="navbarHamburger">
           <GiHamburgerMenu onClick={() => setShow(!show)} />
         </div>
       </div>
