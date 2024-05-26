@@ -1,0 +1,162 @@
+/* Login.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.loginPage {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+}
+
+.loginContainer {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  animation: fadeInUp 1s ease;
+}
+
+.loginHeader {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.loginLogo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.loginForm {
+  width: 100%;
+}
+
+.loginInputTag {
+  margin-bottom: 15px;
+}
+
+.loginInputTag label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: 500;
+}
+
+.loginInputDiv {
+  position: relative;
+}
+
+.loginInput,
+.loginSelect {
+  width: calc(100% - 30px);
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.loginInput:focus,
+.loginSelect:focus {
+  border-color: #ff7e5f;
+}
+
+.loginIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ff7e5f;
+}
+
+.loginButton {
+  width: 100%;
+  padding: 12px 0;
+  background: #ff7e5f;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+
+.loginButton:hover {
+  background: #feb47b;
+}
+
+.loginLink {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  color: #ff7e5f;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.loginLink:hover {
+  color: #feb47b;
+}
+
+.loginBanner {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .loginContainer {
+    flex-direction: row;
+  }
+
+  .loginForm {
+    width: 50%;
+    padding: 20px;
+  }
+
+  .loginBanner {
+    display: block;
+    width: 50%;
+    background: url('/login.png') no-repeat center center/cover;
+    animation: slideInRight 1s ease;
+  }
+
+  .loginBannerImage {
+    display: none;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
