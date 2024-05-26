@@ -3,6 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../main";
+import "./JobDetails.css";
+
 const JobDetails = () => {
   const { id } = useParams();
   const [job, setJob] = useState({});
@@ -28,33 +30,33 @@ const JobDetails = () => {
   }
 
   return (
-    <section className="jobDetail page">
-      <div className="container">
+    <section className="jobDetail-alljobs page-alljobs">
+      <div className="container-alljobs">
         <h3>Job Details</h3>
-        <div className="banner">
+        <div className="banner-alljobs">
           <p>
-            Title: <span> {job.title}</span>
+            <span className="label">Title:</span> <span>{job.title}</span>
           </p>
           <p>
-            Category: <span>{job.category}</span>
+            <span className="label">Category:</span> <span>{job.category}</span>
           </p>
           <p>
-            Country: <span>{job.country}</span>
+            <span className="label">Country:</span> <span>{job.country}</span>
           </p>
           <p>
-            City: <span>{job.city}</span>
+            <span className="label">City:</span> <span>{job.city}</span>
           </p>
           <p>
-            Location: <span>{job.location}</span>
+            <span className="label">Location:</span> <span>{job.location}</span>
           </p>
           <p>
-            Description: <span>{job.description}</span>
+            <span className="label">Description:</span> <span>{job.description}</span>
           </p>
           <p>
-            Job Posted On: <span>{job.jobPostedOn}</span>
+            <span className="label">Job Posted On:</span> <span>{job.jobPostedOn}</span>
           </p>
           <p>
-            Salary:{" "}
+            <span className="label">Salary:</span>{" "}
             {job.fixedSalary ? (
               <span>{job.fixedSalary}</span>
             ) : (

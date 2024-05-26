@@ -1,0 +1,107 @@
+.page-myjobs {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .container-myjobs {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .container-myjobs h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .banner-myjobs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .card-myjobs {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  
+  .content-myjobs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .short_fields-myjobs div,
+  .long_field-myjobs div {
+    margin-bottom: 10px;
+  }
+  
+  .short_fields-myjobs span,
+  .long_field-myjobs span {
+    color: #ff7e5f;
+    font-weight: bold;
+  }
+  
+  .short_fields-myjobs input,
+  .short_fields-myjobs select,
+  .long_field-myjobs textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ff7e5f;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+  
+  .long_field-myjobs textarea {
+    resize: vertical;
+  }
+  
+  .button_wrapper-myjobs {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .edit_btn_wrapper-myjobs {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .edit_btn-myjobs,
+  .check_btn-myjobs,
+  .cross_btn-myjobs,
+  .delete_btn-myjobs {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .edit_btn-myjobs {
+    background-color: green;
+    color: white;
+  }
+  
+  .delete_btn-myjobs {
+    background-color: red;
+    color: white;
+  }
+  
+  .edit_btn-myjobs:hover,
+  .check_btn-myjobs:hover,
+  .cross_btn-myjobs:hover,
+  .delete_btn-myjobs:hover {
+    opacity: 0.8;
+  }
+  
+  .check_btn-myjobs,
+  .cross_btn-myjobs {
+    background-color: #333;
+    color: white;
+  }
+  

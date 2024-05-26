@@ -1,0 +1,55 @@
+.page-alljobs {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+  }
+  
+  .container-alljobs {
+    max-width: 800px;
+    height: 90vh;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .container-alljobs h3 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .banner-alljobs {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  
+  .banner-alljobs p {
+    margin-bottom: 10px;
+    font-size: 25px;
+  }
+  
+  .banner-alljobs .label {
+    color: #ff7e5f;
+    font-weight: bold;
+  }
+  
+  .banner-alljobs a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #ff7e5f;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+  
+  .banner-alljobs a:hover {
+    background-color: #e56b52;
+  }
+  

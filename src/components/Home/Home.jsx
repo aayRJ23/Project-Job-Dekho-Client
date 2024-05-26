@@ -6,6 +6,7 @@ import HeroSection from "./HeroSection";
 import HowItWorks from "./HowItWorks";
 import PopularCategories from "./PopularCategories";
 import PopularCompanies from "./PopularCompanies";
+import './Home.css';
 
 const Home = () => {
   const { isAuthorized } = useContext(Context);

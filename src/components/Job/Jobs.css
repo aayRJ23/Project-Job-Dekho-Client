@@ -1,79 +1,75 @@
 /* Jobs.css */
 
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #4facfe, #00f2fe);
-    color: black;
-  }
-  
-  .jobs-page {
-    padding: 50px 0;
-    min-height: 100vh;
-  }
-  
-  .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 100px auto;
-    background: white;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  }
-  
-  h1 {
+  margin-top: 60px;
+}
+
+.jobs-page {
+  padding: 50px 0;
+  min-height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 100px auto;
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* h1 {
     text-align: center;
     margin-bottom: 30px;
     font-size: 32px;
     font-weight: bold;
     color: #4facfe;
-  }
-  
-  .jobs-banner {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .job-card {
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    width: 250px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .job-card h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #4facfe;
-  }
-  
-  .job-card p {
-    margin: 5px 0;
-  }
-  
-  .details-link {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    background: linear-gradient(to right, #66a6ff, #89f7fe);
-    color: white;
-    text-decoration: none;
-    transition: background 0.3s ease, color 0.3s ease;
-  }
-  
-  .details-link:hover {
-    background: linear-gradient(to right, #89f7fe, #66a6ff);
-    color: black;
-  }
-  
-  .job-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  }
-  
+  } */
+
+.jobs-banner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.job-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.job-card h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #4facfe;
+}
+
+.job-card p {
+  margin: 5px 0;
+}
+
+.details-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #66a6ff, #89f7fe);
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.details-link:hover {
+  background: linear-gradient(to right, #89f7fe, #66a6ff);
+  color: black;
+}
+
+.job-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
