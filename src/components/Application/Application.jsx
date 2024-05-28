@@ -3,7 +3,6 @@ import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { Context } from "../../main";
-import './MyApplications.css';
 
 const Application = () => {
   const [name, setName] = useState("");
@@ -12,6 +11,7 @@ const Application = () => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [resume, setResume] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const { isAuthorized, user } = useContext(Context);
   const navigateTo = useNavigate();
@@ -25,6 +25,7 @@ const Application = () => {
 
   const handleApplication = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const formData = new FormData();
     formData.append("name", name);
     formData.append("email", email);
@@ -55,6 +56,8 @@ const Application = () => {
       navigateTo("/job/getall");
     } catch (error) {
       toast.error(error.response.data.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -73,6 +76,11 @@ const Application = () => {
 
   return (
     <section className="application-applicationform">
+      {loading && (
+        <div className="loader-applicationform">
+          <div className="spinner-applicationform"></div>
+        </div>
+      )}
       <div className="container-applicationform">
         <h3 className="heading-applicationform">Application Form</h3>
         <form onSubmit={handleApplication} className="form-applicationform">
