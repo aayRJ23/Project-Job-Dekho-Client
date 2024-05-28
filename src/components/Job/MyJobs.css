@@ -7,7 +7,7 @@
     max-width: 800px;
     margin: auto;
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #0000;
     border-radius: 10px;
     background-color: #f9f9f9;
   }
@@ -25,7 +25,7 @@
   
   .card-myjobs {
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 2px solid #525252;
     border-radius: 10px;
     background-color: #fff;
   }

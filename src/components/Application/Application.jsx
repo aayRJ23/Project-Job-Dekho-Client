@@ -3,6 +3,8 @@ import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { Context } from "../../main";
+import './MyApplications.css';
+
 const Application = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -12,16 +14,15 @@ const Application = () => {
   const [resume, setResume] = useState(null);
 
   const { isAuthorized, user } = useContext(Context);
-
   const navigateTo = useNavigate();
 
-  // Function to handle file input changes
   const handleFileChange = (event) => {
     const resume = event.target.files[0];
     setResume(resume);
   };
 
   const { id } = useParams();
+
   const handleApplication = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -49,7 +50,7 @@ const Application = () => {
       setCoverLetter("");
       setPhone("");
       setAddress("");
-      setResume("");
+      setResume(null);
       toast.success(data.message);
       navigateTo("/job/getall");
     } catch (error) {
@@ -57,58 +58,80 @@ const Application = () => {
     }
   };
 
+  const handleClear = () => {
+    setName("");
+    setEmail("");
+    setCoverLetter("");
+    setPhone("");
+    setAddress("");
+    setResume(null);
+  };
+
   if (!isAuthorized || (user && user.role === "Employer")) {
     navigateTo("/");
   }
 
   return (
-    <section className="application">
-      <div className="container">
-        <h3>Application Form</h3>
-        <form onSubmit={handleApplication}>
+    <section className="application-applicationform">
+      <div className="container-applicationform">
+        <h3 className="heading-applicationform">Application Form</h3>
+        <form onSubmit={handleApplication} className="form-applicationform">
+          <label className="label-applicationform">Your Name</label>
           <input
             type="text"
             placeholder="Your Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            className="input-applicationform"
           />
+          <label className="label-applicationform">Your Email</label>
           <input
             type="email"
             placeholder="Your Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className="input-applicationform"
           />
+          <label className="label-applicationform">Your Phone Number</label>
           <input
             type="number"
             placeholder="Your Phone Number"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
+            className="input-applicationform"
           />
+          <label className="label-applicationform">Your Address</label>
           <input
             type="text"
             placeholder="Your Address"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
+            className="input-applicationform"
           />
+          <label className="label-applicationform">Cover Letter</label>
           <textarea
             placeholder="CoverLetter..."
             value={coverLetter}
             onChange={(e) => setCoverLetter(e.target.value)}
+            className="textarea-applicationform"
           />
-          <div>
-            <label
-              style={{ textAlign: "start", display: "block", fontSize: "20px" }}
-            >
-              Select Resume
-            </label>
+          <div className="file-input-applicationform">
+            <label className="file-label-applicationform">Select Resume</label>
             <input
               type="file"
               accept=".pdf, .jpg, .png"
               onChange={handleFileChange}
-              style={{ width: "100%" }}
+              className="file-applicationform"
             />
           </div>
-          <button type="submit">Send Application</button>
+          <div className="button-group-applicationform">
+            <button type="button" onClick={handleClear} className="clear-button-applicationform">
+              Clear
+            </button>
+            <button type="submit" className="submit-button-applicationform">
+              Send Application
+            </button>
+          </div>
         </form>
       </div>
     </section>

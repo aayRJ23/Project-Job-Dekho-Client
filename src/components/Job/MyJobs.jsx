@@ -85,7 +85,7 @@ const MyJobs = () => {
   return (
     <div className="myJobs-myjobs page-myjobs">
       <div className="container-myjobs">
-        <h1>Your Posted Jobs</h1>
+        <h1 className="myjobs-header">Your Posted Jobs</h1>
         {myJobs.length > 0 ? (
           <div className="banner-myjobs">
             {myJobs.map((element) => (
