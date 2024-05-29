@@ -53,7 +53,7 @@ const Register = () => {
     <section className="registerPage">
       <div className="registerContainer">
         <div className="registerHeader">
-          <img src="/JobZeelogo.png" alt="logo" className="registerLogo" />
+          {/* <img src="/JobZeelogo.png" alt="logo" className="registerLogo" /> */}
           <h3>Create a new account</h3>
         </div>
         <form className="registerForm">
@@ -73,7 +73,7 @@ const Register = () => {
             <div className="registerInputDiv">
               <input
                 type="text"
-                placeholder="Zeeshan"
+                placeholder="Your Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="registerInput"
@@ -86,7 +86,7 @@ const Register = () => {
             <div className="registerInputDiv">
               <input
                 type="email"
-                placeholder="zk@gmail.com"
+                placeholder="Your Email ID"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="registerInput"
@@ -99,7 +99,7 @@ const Register = () => {
             <div className="registerInputDiv">
               <input
                 type="number"
-                placeholder="12345678"
+                placeholder="Your Phone No."
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 className="registerInput"
