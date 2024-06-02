@@ -23,7 +23,7 @@ const JobDetails = () => {
       .catch((error) => {
         navigateTo("/notfound");
       });
-  }, []);
+  }, [id, navigateTo]);
 
   if (!isAuthorized) {
     navigateTo("/login");
