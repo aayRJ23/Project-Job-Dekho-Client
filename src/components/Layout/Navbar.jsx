@@ -32,7 +32,7 @@ const Navbar = () => {
     <nav className={`navbar ${isAuthorized ? "navbarShow" : "navbarHide"}`}>
       <div className="navbarContainer">
         <div className="navbarLogo">
-          <img src="/JobZee-logos__white.png" alt="logo" />
+          <img src="/logo.jpg" alt="logo" />
         </div>
         <ul className={`navbarMenu ${show ? "showMenu" : ""}`}>
           <li>

@@ -1,42 +1,56 @@
 import React from "react";
-import { FaMicrosoft, FaApple } from "react-icons/fa";
-import { SiTesla } from "react-icons/si";
+import { FaMicrosoft, FaApple, FaGoogle, FaFacebook, FaAmazon } from "react-icons/fa";
+import './Home.css';
 
 const PopularCompanies = () => {
   const companies = [
     {
       id: 1,
       title: "Microsoft",
-      location: "Street 10 Karachi, Pakistan",
+      location: "Bangalore, India",
       openPositions: 10,
       icon: <FaMicrosoft />,
     },
     {
       id: 2,
-      title: "Tesla",
-      location: "Street 10 Karachi, Pakistan",
-      openPositions: 5,
-      icon: <SiTesla />,
+      title: "Google",
+      location: "Hyderabad, India",
+      openPositions: 15,
+      icon: <FaGoogle />,
     },
     {
       id: 3,
-      title: "Apple",
-      location: "Street 10 Karachi, Pakistan",
+      title: "Facebook",
+      location: "Mumbai, India",
+      openPositions: 8,
+      icon: <FaFacebook />,
+    },
+    {
+      id: 4,
+      title: "Amazon",
+      location: "Chennai, India",
       openPositions: 20,
+      icon: <FaAmazon />,
+    },
+    {
+      id: 5,
+      title: "Apple",
+      location: "Pune, India",
+      openPositions: 5,
       icon: <FaApple />,
     },
   ];
   return (
-    <div className="companies">
-      <div className="container">
+    <div className="companies-popularCompanies">
+      <div className="container-popularCompanies">
         <h3>TOP COMPANIES</h3>
-        <div className="banner">
+        <div className="banner-popularCompanies">
           {companies.map((element) => {
             return (
-              <div className="card" key={element.id}>
-                <div className="content">
-                  <div className="icon">{element.icon}</div>
-                  <div className="text">
+              <div className="card-popularCompanies" key={element.id}>
+                <div className="content-popularCompanies">
+                  <div className="icon-popularCompanies">{element.icon}</div>
+                  <div className="text-popularCompanies">
                     <p>{element.title}</p>
                     <p>{element.location}</p>
                   </div>

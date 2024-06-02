@@ -9,6 +9,7 @@ import { TbAppsFilled } from "react-icons/tb";
 import { FaReact } from "react-icons/fa";
 import { GiArtificialIntelligence } from "react-icons/gi";
 import { IoGameController } from "react-icons/io5";
+import './Home.css';
 
 const PopularCategories = () => {
   const categories = [
@@ -62,14 +63,14 @@ const PopularCategories = () => {
     },
   ];
   return (
-    <div className="categories">
+    <div className="categories-popularCategories">
       <h3>POPULAR CATEGORIES</h3>
-      <div className="banner">
+      <div className="banner-popularCategories">
         {categories.map((element) => {
           return (
-            <div className="card" key={element.id}>
-              <div className="icon">{element.icon}</div>
-              <div className="text">
+            <div className="card-popularCategories" key={element.id}>
+              <div className="icon-popularCategories">{element.icon}</div>
+              <div className="text-popularCategories">
                 <p>{element.title}</p>
                 <p>{element.subTitle}</p>
               </div>

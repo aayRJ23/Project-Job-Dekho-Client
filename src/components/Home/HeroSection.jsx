@@ -1,5 +1,6 @@
 import React from "react";
 import { FaBuilding, FaSuitcase, FaUsers, FaUserPlus } from "react-icons/fa";
+import './Home.css';
 
 const HeroSection = () => {
   const details = [
@@ -30,9 +31,9 @@ const HeroSection = () => {
   ];
   return (
     <>
-      <div className="heroSection">
-        <div className="container">
-          <div className="title">
+      <div className="heroSection-hero">
+        <div className="container-hero">
+          <div className="title-hero">
             <h1>Find a job that suits</h1>
             <h1>your interests and skills</h1>
             <p>
@@ -41,16 +42,16 @@ const HeroSection = () => {
               facere mollitia!
             </p>
           </div>
-          <div className="image">
+          <div className="image-hero">
             <img src="/heroS.jpg" alt="hero" />
           </div>
         </div>
-        <div className="details">
+        <div className="details-hero">
           {details.map((element) => {
             return (
-              <div className="card" key={element.id}>
-                <div className="icon">{element.icon}</div>
-                <div className="content">
+              <div className="card-hero" key={element.id}>
+                <div className="icon-hero">{element.icon}</div>
+                <div className="content-hero">
                   <p>{element.title}</p>
                   <p>{element.subTitle}</p>
                 </div>

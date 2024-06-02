@@ -15,7 +15,7 @@ const Home = () => {
   }
   return (
     <>
-      <section className="homePage page">
+      <section className="homePage-home page-home">
         <HeroSection />
         <HowItWorks />
         <PopularCategories />

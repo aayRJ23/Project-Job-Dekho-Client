@@ -10,6 +10,7 @@ const MyApplications = () => {
   const [applications, setApplications] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [resumeImageUrl, setResumeImageUrl] = useState("");
+  const [resumeName, setResumeName] = useState("");
 
   const { isAuthorized } = useContext(Context);
   const navigateTo = useNavigate();
@@ -59,8 +60,9 @@ const MyApplications = () => {
     }
   };
 
-  const openModal = (imageUrl) => {
+  const openModal = (imageUrl, name) => {
     setResumeImageUrl(imageUrl);
+    setResumeName(name);
     setModalOpen(true);
   };
 
@@ -98,7 +100,7 @@ const MyApplications = () => {
         )}
       </div>
       {modalOpen && (
-        <ResumeModal imageUrl={resumeImageUrl} onClose={closeModal} />
+        <ResumeModal imageUrl={resumeImageUrl} name={resumeName} onClose={closeModal} />
       )}
     </section>
   );
@@ -131,7 +133,7 @@ const JobSeekerCard = ({ element, deleteApplication, openModal, index }) => {
         <img
           src={element.resume.url}
           alt="resume"
-          onClick={() => openModal(element.resume.url)}
+          onClick={() => openModal(element.resume.url, element.name)}
         />
       </div>
       <div className="btn_area">
@@ -168,8 +170,9 @@ const EmployerCard = ({ element, openModal, index }) => {
         <img
           src={element.resume.url}
           alt="resume"
-          onClick={() => openModal(element.resume.url)}
+          onClick={() => openModal(element.resume.url, element.name)}
         />
+        <p className="resume-name">{element.name.split(' ')[0]}'s Resume</p>
       </div>
     </div>
   );
