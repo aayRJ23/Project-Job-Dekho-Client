@@ -1,55 +1,71 @@
-.page-alljobs {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    height: 100vh;
-  }
-  
-  .container-alljobs {
-    max-width: 800px;
-    height: 90vh;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-  }
-  
-  .container-alljobs h3 {
-    text-align: center;
-    color: #333;
-  }
-  
-  .banner-alljobs {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #fff;
-  }
-  
-  .banner-alljobs p {
-    margin-bottom: 10px;
-    font-size: 25px;
-  }
-  
-  .banner-alljobs .label {
-    color: #ff7e5f;
-    font-weight: bold;
-  }
-  
-  .banner-alljobs a {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 20px;
-    background-color: #ff7e5f;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    text-align: center;
-    transition: background-color 0.3s;
-  }
-  
-  .banner-alljobs a:hover {
-    background-color: #e56b52;
-  }
-  
+.page-job-details {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+}
+
+.container-job-details {
+  max-width: 800px;
+  height: 100vh; /* Updated to 100vh */
+  margin: auto;
+  padding: 20px;
+  border: 2px solid #080808;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.heading-job-details {
+  text-align: center;
+  color: #ff7e5f; /* Updated color to match labels */
+}
+
+.banner-job-details {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid #ff7e5f; /* Border color same as labels */
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.banner-job-details .field-job-details {
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+
+.banner-job-details .label-job-details {
+  color: #ff7e5f;
+  font-weight: bold;
+}
+
+.banner-job-details .description-job-details {
+  white-space: pre-wrap; /* Ensure text wrapping */
+}
+
+.banner-job-details .apply-link-job-details {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #ff7e5f;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.banner-job-details .apply-link-job-details:hover {
+  background-color: #e56b52;
+}
+
+.desc-data-job-details,
+.location-data-job-details {
+  text-wrap: wrap;
+  width: 30px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+  font-family: "Roboto", sans-serif;
+}

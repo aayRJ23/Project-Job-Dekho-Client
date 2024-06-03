@@ -175,50 +175,48 @@ const MyJobs = () => {
                       </select>
                     </div>
                     <div>
-                      <span>
-                        Salary:{" "}
-                        {element.fixedSalary ? (
+                      <span>Salary:</span>
+                      {element.fixedSalary ? (
+                        <input
+                          type="number"
+                          disabled={editingMode !== element._id}
+                          value={element.fixedSalary}
+                          onChange={(e) =>
+                            handleInputChange(
+                              element._id,
+                              "fixedSalary",
+                              e.target.value
+                            )
+                          }
+                        />
+                      ) : (
+                        <>
                           <input
                             type="number"
                             disabled={editingMode !== element._id}
-                            value={element.fixedSalary}
+                            value={element.salaryFrom}
                             onChange={(e) =>
                               handleInputChange(
                                 element._id,
-                                "fixedSalary",
+                                "salaryFrom",
                                 e.target.value
                               )
                             }
                           />
-                        ) : (
-                          <div>
-                            <input
-                              type="number"
-                              disabled={editingMode !== element._id}
-                              value={element.salaryFrom}
-                              onChange={(e) =>
-                                handleInputChange(
-                                  element._id,
-                                  "salaryFrom",
-                                  e.target.value
-                                )
-                              }
-                            />
-                            <input
-                              type="number"
-                              disabled={editingMode !== element._id}
-                              value={element.salaryTo}
-                              onChange={(e) =>
-                                handleInputChange(
-                                  element._id,
-                                  "salaryTo",
-                                  e.target.value
-                                )
-                              }
-                            />
-                          </div>
-                        )}
-                      </span>
+                          <input
+                            type="number"
+                            disabled={editingMode !== element._id}
+                            value={element.salaryTo}
+                            onChange={(e) =>
+                              handleInputChange(
+                                element._id,
+                                "salaryTo",
+                                e.target.value
+                              )
+                            }
+                          />
+                        </>
+                      )}
                     </div>
                     <div>
                       <span>Expired:</span>

@@ -1,114 +1,128 @@
-/* PostJob.css */
+.job-post-page {
+  padding: 50px 0;
+  min-height: 100vh;
+}
 
-  
-  .job-post-page {
-    padding: 50px 0;
-    min-height: 100vh;
-  }
-  
-  .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  }
-  
-  h3 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 32px;
-    font-weight: bold;
-    color: #ff7e5f;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid #ff7e5f;
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  .form-wrapper {
-    margin-bottom: 20px;
-  }
-  
-  .form-wrapper label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #ff7e5f;
-  }
-  
-  .wrapper {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .wrapper input,
-  .salary-wrapper select,
-  .salary-wrapper input,
-  textarea,
-  .animated-input,
-  .animated-select,
-  .animated-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ff7e5f;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .animated-input:focus,
-  .animated-select:focus,
-  .animated-textarea:focus {
-    background-color: rgba(255, 126, 95, 0.1);
-    box-shadow: 0 0 10px rgba(255, 126, 95, 0.5);
-  }
-  
-  .salary-wrapper {
-    margin-bottom: 20px;
-  }
-  
-  .salary-wrapper select,
-  .ranged-salary input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ff7e5f;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .salary-message {
-    color: #ff0000;
-  }
-  
-  textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ff7e5f;
-    border-radius: 5px;
-    resize: none;
-  }
-  
-  .submit-button {
-    padding: 15px;
-    border: none;
-    border-radius: 5px;
-    background: linear-gradient(to right, #66a6ff, #89f7fe);
-    color: black;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-size: 16px;
-  }
-  
-  .submit-button:hover {
-    background: linear-gradient(to right, #89f7fe, #66a6ff);
-    color: white;
-  }
-  
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 4rem;
+  font-weight: bold;
+  color: #ff7e5f;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #ff7e5f;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.form-wrapper {
+  margin-bottom: 20px;
+}
+
+.form-wrapper label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #ff7e5f;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.wrapper input,
+.salary-wrapper select,
+.salary-wrapper input,
+textarea,
+.animated-input,
+.animated-select,
+.animated-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ff7e5f;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animated-input:focus,
+.animated-select:focus,
+.animated-textarea:focus {
+  background-color: rgba(255, 126, 95, 0.1);
+  box-shadow: 0 0 10px rgba(255, 126, 95, 0.5);
+}
+
+.salary-wrapper {
+  margin-bottom: 20px;
+}
+
+.salary-wrapper select,
+.ranged-salary input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ff7e5f;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.salary-message {
+  color: #ff0000;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ff7e5f;
+  border-radius: 5px;
+  resize: none;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.submit-button,
+.clear-button {
+  padding: 15px;
+  border: none;
+  border-radius: 30px; /* Increased border radius for capsule-like buttons */
+  background: linear-gradient(to right, #66a6ff, #89f7fe);
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 16px;
+  width: 20%; /* Increased width of buttons */
+  text-align: center;
+}
+
+.clear-button {
+  background: red;
+  color: white;
+}
+
+.clear-button:hover {
+  background: darkred;
+}
+
+.submit-button:hover {
+  background: linear-gradient(to right, #89f7fe, #66a6ff);
+  color: white;
+}

@@ -1,107 +1,132 @@
 .page-myjobs {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  .container-myjobs {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #0000;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-  }
-  
-  .container-myjobs h1 {
-    text-align: center;
-    color: #333;
-  }
-  
-  .banner-myjobs {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .card-myjobs {
-    padding: 20px;
-    border: 2px solid #525252;
-    border-radius: 10px;
-    background-color: #fff;
-  }
-  
-  .content-myjobs {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .short_fields-myjobs div,
-  .long_field-myjobs div {
-    margin-bottom: 10px;
-  }
-  
-  .short_fields-myjobs span,
-  .long_field-myjobs span {
-    color: #ff7e5f;
-    font-weight: bold;
-  }
-  
-  .short_fields-myjobs input,
-  .short_fields-myjobs select,
-  .long_field-myjobs textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ff7e5f;
-    border-radius: 5px;
-    margin-top: 5px;
-  }
-  
-  .long_field-myjobs textarea {
-    resize: vertical;
-  }
-  
-  .button_wrapper-myjobs {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .edit_btn_wrapper-myjobs {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .edit_btn-myjobs,
-  .check_btn-myjobs,
-  .cross_btn-myjobs,
-  .delete_btn-myjobs {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .edit_btn-myjobs {
-    background-color: green;
-    color: white;
-  }
-  
-  .delete_btn-myjobs {
-    background-color: red;
-    color: white;
-  }
-  
-  .edit_btn-myjobs:hover,
-  .check_btn-myjobs:hover,
-  .cross_btn-myjobs:hover,
-  .delete_btn-myjobs:hover {
-    opacity: 0.8;
-  }
-  
-  .check_btn-myjobs,
-  .cross_btn-myjobs {
-    background-color: #333;
-    color: white;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.container-myjobs {
+  width: 100%;
+  max-width: 800px;
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid black; /* Stylish black border */
+}
+
+.myjobs-header {
+  color: #ff7e5f;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.banner-myjobs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-myjobs {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  border: 2px solid #ff7e5f; /* Border same as label color */
+}
+
+.content-myjobs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.short_fields-myjobs,
+.long_field-myjobs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.short_fields-myjobs div,
+.long_field-myjobs div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.short_fields-myjobs span,
+.long_field-myjobs span {
+  color: #ff7e5f;
+  min-width: 150px; /* Increased the size of the labels */
+  font-size: 16px; /* Increased the font size of the labels */
+  font-weight: bold;
+}
+
+.short_fields-myjobs input,
+.long_field-myjobs textarea,
+.short_fields-myjobs select {
+  width: calc(100% - 150px); /* Adjusted width to match new label size */
+  padding: 10px; /* Increased height of the input */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px; /* Increased font size of the inputs */
+}
+
+.long_field-myjobs textarea {
+  height: 100px; /* Increased height of the textarea */
+  /* Removed resize: none; to allow resizing */
+}
+
+.button_wrapper-myjobs {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.edit_btn-myjobs,
+.check_btn-myjobs,
+.cross_btn-myjobs,
+.delete_btn-myjobs {
+  border: none;
+  color: white;
+  padding: 10px 0;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 150px;
+  text-align: center;
+}
+
+.edit_btn-myjobs {
+  background-color: green;
+}
+
+.edit_btn-myjobs:hover {
+  background-color: darkgreen;
+}
+
+.delete_btn-myjobs {
+  background-color: red;
+}
+
+.delete_btn-myjobs:hover {
+  background-color: darkred;
+}
+
+.check_btn-myjobs {
+  background-color: #4caf50;
+  margin-right: 5px;
+}
+
+.cross_btn-myjobs {
+  background-color: #f44336;
+}
+
+.no-jobs-message-myjobs {
+  text-align: center;
+  color: #999;
+  font-size: 18px;
+}

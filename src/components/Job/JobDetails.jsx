@@ -29,46 +29,57 @@ const JobDetails = () => {
     navigateTo("/login");
   }
 
+  const formatDateTime = (dateTime) => {
+    const dateObj = new Date(dateTime);
+    const date = dateObj.toLocaleDateString("en-GB");
+    const time = dateObj.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+    return `${date} ${time}`;
+  };
+
   return (
-    <section className="jobDetail-alljobs page-alljobs">
-      <div className="container-alljobs">
-        <h3>Job Details</h3>
-        <div className="banner-alljobs">
-          <p>
-            <span className="label">Title:</span> <span>{job.title}</span>
+    <section className="jobDetail-job-details page-job-details">
+      <div className="container-job-details">
+        <h3 className="heading-job-details">Job Details</h3>
+        <div className="banner-job-details">
+          <p className="field-job-details">
+            <span className="label-job-details">Title:</span> <span>{job.title}</span>
           </p>
-          <p>
-            <span className="label">Category:</span> <span>{job.category}</span>
+          <p className="field-job-details">
+            <span className="label-job-details">Category:</span> <span>{job.category}</span>
           </p>
-          <p>
-            <span className="label">Country:</span> <span>{job.country}</span>
+          <p className="field-job-details">
+            <span className="label-job-details">Country:</span> <span>{job.country}</span>
           </p>
-          <p>
-            <span className="label">City:</span> <span>{job.city}</span>
+          <p className="field-job-details">
+            <span className="label-job-details">City:</span> <span>{job.city}</span>
           </p>
-          <p>
-            <span className="label">Location:</span> <span>{job.location}</span>
+          <p className="field-job-details">
+            <span className="label-job-details">Location:</span> <span className="location-data-job-details">{job.location}</span>
           </p>
-          <p>
-            <span className="label">Description:</span> <span>{job.description}</span>
+          <p className="field-job-details description-job-details">
+            <span className="label-job-details">Description:</span> <span className="desc-data-job-details">{job.description}</span>
           </p>
-          <p>
-            <span className="label">Job Posted On:</span> <span>{job.jobPostedOn}</span>
+          <p className="field-job-details">
+            <span className="label-job-details">Job Posted On:</span> <span>{formatDateTime(job.jobPostedOn)}</span>
           </p>
-          <p>
-            <span className="label">Salary:</span>{" "}
+          <p className="field-job-details">
+            <span className="label-job-details">Salary:</span>{" "}
             {job.fixedSalary ? (
-              <span>{job.fixedSalary}</span>
+              <span>{job.fixedSalary} &#8377;</span>
             ) : (
               <span>
-                {job.salaryFrom} - {job.salaryTo}
+                {job.salaryFrom} - {job.salaryTo} &#8377;
               </span>
             )}
           </p>
           {user && user.role === "Employer" ? (
             <></>
           ) : (
-            <Link to={`/application/${job._id}`}>Apply Now</Link>
+            <Link to={`/application/${job._id}`} className="apply-link-job-details">Apply Now</Link>
           )}
         </div>
       </div>

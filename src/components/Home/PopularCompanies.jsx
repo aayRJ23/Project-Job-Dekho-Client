@@ -40,6 +40,7 @@ const PopularCompanies = () => {
       icon: <FaApple />,
     },
   ];
+  
   return (
     <div className="companies-popularCompanies">
       <div className="container-popularCompanies">

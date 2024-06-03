@@ -166,55 +166,69 @@
   
   .banner-popularCompanies {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     margin-top: 50px;
+    padding: 20px 5px;
   }
   
   .card-popularCompanies {
     padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #ffffff, hsl(0, 6%, 80%));
+    border-radius: 10px;
+    /* border: 1px solid black; Added black border */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    color: rgb(0, 0, 0);
   }
   
   .card-popularCompanies:hover {
     transform: translateY(-10px);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
   }
   
   .content-popularCompanies {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
   }
   
   .icon-popularCompanies {
-    font-size: 2rem;
-    margin-right: 20px;
+    font-size: 3rem;
+    flex: 1;
+  }
+  
+  .text-popularCompanies {
+    flex: 2;
+    text-align: right;
   }
   
   .text-popularCompanies p {
-    font-size: 1rem;
-    color: #666;
+    font-size: 1.2rem;
     margin-bottom: 5px;
+    margin-right: 20px;
   }
   
   button {
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
-    background-color: #007bff;
+    border-radius: 20px;
+    background: #007bff;
     color: #fff;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: block;
+    margin: 20px 20px 0 auto;
+    text-align: center;
   }
   
   button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
   }
+  
   
   /* Keyframes for Animations */
   @keyframes fadeIn {
