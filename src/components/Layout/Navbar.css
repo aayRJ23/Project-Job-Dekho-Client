@@ -1,112 +1,119 @@
-/* Navbar.css */
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100%;
+  background-color: #ff7e5f; /* Sidebar color */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Outer black shadow */
+  border: 2px solid white; /* Inner white outline */
+  transform: translateX(-100%);
+}
 
-.navbar {
+.sidebarContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebarMenu {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebarMenu li {
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.sidebarMenu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 15px 0;
+  width: 100%;
+  display: block;
+}
+
+.sidebarMenu li a:hover,
+.sidebarMenu li a.active {
+  color: #ff7e5f; /* Text color on hover */
+  background-color: white; /* Background color on hover */
+}
+
+.logoutButton {
+  background: linear-gradient(to right, #ff4e50, #f9d423); /* Gradient effect */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.logoutButton:hover {
+  background: linear-gradient(to right, #f9d423, #ff4e50); /* Gradient effect on hover */
+  color: #ff0000; /* Red text */
+}
+
+.hamburgerMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #ff7e5f; /* Icon color */
+  background-color: white; /* Background circle */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  z-index: 1100; /* Higher than sidebar */
+  transition: transform 0.3s ease;
+}
+
+.hamburgerMenu:hover {
+  transform: scale(1.1);
+}
+
+.hamburgerMenu svg {
+  transition: transform 0.3s ease;
+}
+
+.hamburgerMenu:hover svg {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+  .sidebarMenu {
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.85); /* Glossy black */
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px 0;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0, 0, 139, 0.3); /* Dark blue shadow */
-    transition: top 0.3s ease;
-  }
-  
-  .navbarShow {
-    top: 0;
-  }
-  
-  .navbarHide {
-    top: -100px;
-  }
-  
-  .navbarContainer {
-    width: 90%;
-    max-width: 1200px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbarLogo img {
-    height: 40px;
-  }
-  
-  .navbarMenu {
-    list-style: none;
-    display: flex;
-    align-items: center;
+    transform: translateX(-100%);
     transition: transform 0.3s ease;
   }
-  
-  .navbarMenu.showMenu {
-    transform: translateX(0);
+
+  .sidebarMenu li {
+    margin: 10px 0;
   }
-  
-  .navbarMenu li {
-    margin-left: 20px;
-  }
-  
-  .navbarMenu li a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    padding: 20px 20px;
-    border-radius: 5px;
-  }
-  
-  .navbarMenu li a:hover,
-  .navbarMenu li a.active {
-    color: #000000; /* Blue text */
-    font-weight: bold;
-    background-color: rgb(233, 224, 152); /* White background */
-  }
-  
-  .logoutButton {
-    background: linear-gradient(to right, #66a6ff, #89f7fe); /* Gradient effect */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .logoutButton:hover {
-    background: linear-gradient(to right, #89f7fe, #66a6ff); /* Gradient effect on hover */
-    color: #0000ff; /* Blue text */
-  }
-  
-  .navbarHamburger {
-    display: none;
-    cursor: pointer;
-    font-size: 24px;
-    color: white;
-  }
-  
-  @media (max-width: 768px) {
-    .navbarMenu {
-      flex-direction: column;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.85); /* Glossy black */
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-    }
-  
-    .navbarMenu li {
-      margin: 10px 0;
-    }
-  
-    .navbarHamburger {
-      display: block;
-    }
-  }
-  
+}

@@ -4,7 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { GiHamburgerMenu } from "react-icons/gi";
-import "./Navbar.css";  // Import the CSS file
+import { motion } from "framer-motion";
+import { FiX } from "react-icons/fi"; // Import the close icon
+import "./Navbar.css"; // Import the CSS file
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -28,57 +30,77 @@ const Navbar = () => {
     }
   };
 
+  const sidebarVariants = {
+    open: {
+      x: 0,
+      transition: {
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+      },
+    },
+    closed: {
+      x: "-100%",
+      transition: {
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+      },
+    },
+  };
+
   return (
-    <nav className={`navbar ${isAuthorized ? "navbarShow" : "navbarHide"}`}>
-      <div className="navbarContainer">
-        <div className="navbarLogo">
-          <img src="/logo.jpg" alt="logo" />
+    <div>
+      <motion.nav
+        className={`sidebar ${isAuthorized ? "navbarShow" : "navbarHide"}`}
+        animate={show ? "open" : "closed"}
+        variants={sidebarVariants}
+      >
+        <div className="sidebarContainer">
+          <ul className="sidebarMenu">
+            <li>
+              <Link to={"/"} onClick={() => setShow(false)}>
+                HOME
+              </Link>
+            </li>
+            <li>
+              <Link to={"/job/getall"} onClick={() => setShow(false)}>
+                ALL JOBS
+              </Link>
+            </li>
+            <li>
+              <Link to={"/applications/me"} onClick={() => setShow(false)}>
+                {user && user.role === "Employer"
+                  ? "APPLICANT'S APPLICATIONS"
+                  : "MY APPLICATIONS"}
+              </Link>
+            </li>
+            {user && user.role === "Employer" ? (
+              <>
+                <li>
+                  <Link to={"/job/post"} onClick={() => setShow(false)}>
+                    POST NEW JOB
+                  </Link>
+                </li>
+                <li>
+                  <Link to={"/job/me"} onClick={() => setShow(false)}>
+                    VIEW YOUR JOBS
+                  </Link>
+                </li>
+              </>
+            ) : null}
+            <li>
+              <button className="logoutButton" onClick={handleLogout}>
+                LOGOUT
+              </button>
+            </li>
+          </ul>
         </div>
-        <ul className={`navbarMenu ${show ? "showMenu" : ""}`}>
-          <li>
-            <Link to={"/"} onClick={() => setShow(false)}>
-              HOME
-            </Link>
-          </li>
-          <li>
-            <Link to={"/job/getall"} onClick={() => setShow(false)}>
-              ALL JOBS
-            </Link>
-          </li>
-          <li>
-            <Link to={"/applications/me"} onClick={() => setShow(false)}>
-              {user && user.role === "Employer"
-                ? "APPLICANT'S APPLICATIONS"
-                : "MY APPLICATIONS"}
-            </Link>
-          </li>
-          {user && user.role === "Employer" ? (
-            <>
-              <li>
-                <Link to={"/job/post"} onClick={() => setShow(false)}>
-                  POST NEW JOB
-                </Link>
-              </li>
-              <li>
-                <Link to={"/job/me"} onClick={() => setShow(false)}>
-                  VIEW YOUR JOBS
-                </Link>
-              </li>
-            </>
-          ) : (
-            <></>
-          )}
-          <li>
-            <button className="logoutButton" onClick={handleLogout}>
-              LOGOUT
-            </button>
-          </li>
-        </ul>
-        <div className="navbarHamburger">
-          <GiHamburgerMenu onClick={() => setShow(!show)} />
-        </div>
+      </motion.nav>
+      <div className="hamburgerMenu" onClick={() => setShow(!show)}>
+        {show ? <FiX /> : <GiHamburgerMenu />}
       </div>
-    </nav>
+    </div>
   );
 };
 
