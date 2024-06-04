@@ -7,12 +7,12 @@ const HeroSection = () => {
     {
       id: 1,
       title: "1,23,441",
-      subTitle: "Live Job",
+      subTitle: "Live Jobs",
       icon: <FaSuitcase />,
     },
     {
       id: 2,
-      title: "91220",
+      title: "91,220",
       subTitle: "Companies",
       icon: <FaBuilding />,
     },
@@ -30,37 +30,34 @@ const HeroSection = () => {
     },
   ];
   return (
-    <>
-      <div className="heroSection-hero">
-        <div className="container-hero">
-          <div className="title-hero">
-            <h1>Find a job that suits</h1>
-            <h1>your interests and skills</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-              voluptate repellat modi quidem aliquid eaque ducimus ipsa et,
-              facere mollitia!
-            </p>
-          </div>
-          <div className="image-hero">
-            <img src="/heroS.jpg" alt="hero" />
-          </div>
+    <div className="heroSection-hero">
+      <div className="container-hero">
+        <div className="title-hero">
+          <h1>Discover Your Next Opportunity</h1>
+          <p>
+            Explore a variety of job listings, connect with top companies, and take the next step in your career journey.
+          </p>
         </div>
-        <div className="details-hero">
-          {details.map((element) => {
-            return (
-              <div className="card-hero" key={element.id}>
+        <div className="image-hero">
+          <img src="/heroS.jpg" alt="hero" />
+        </div>
+      </div>
+      <div className="details-hero">
+        {details.map((element) => {
+          return (
+            <div className="card-hero" key={element.id}>
+              <div className="content-hero">
                 <div className="icon-hero">{element.icon}</div>
-                <div className="content-hero">
+                <div className="text-hero">
                   <p>{element.title}</p>
                   <p>{element.subTitle}</p>
                 </div>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -69,10 +69,13 @@ const PopularCategories = () => {
         {categories.map((element) => {
           return (
             <div className="card-popularCategories" key={element.id}>
-              <div className="icon-popularCategories">{element.icon}</div>
-              <div className="text-popularCategories">
-                <p>{element.title}</p>
-                <p>{element.subTitle}</p>
+              <div className="content-popularCategories">
+                <div className="icon-popularCategories">{element.icon}</div>
+                <div className="text-popularCategories">
+                  <p>{element.title}</p>
+                  <p>{element.subTitle}</p>
+                  <button>Open Positions</button>
+                </div>
               </div>
             </div>
           );
