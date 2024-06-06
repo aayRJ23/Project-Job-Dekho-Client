@@ -17,14 +17,23 @@
   margin-bottom: 50px;
 }
 
+
 .container-hero {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   padding: 0px 50px;
   animation: fadeIn 1.5s ease-in-out;
 }
-
+.title-hero{
+  margin-top: 6rem;
+  width:70%;
+}
+.title-hero span{
+  padding: 0px 10px;
+  color: white;
+  background-color: #ff7e5f;
+}
 .title-hero h1 {
   font-size: 2.5rem;
   margin-bottom: 10px;

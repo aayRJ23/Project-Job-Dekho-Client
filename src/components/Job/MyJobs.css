@@ -100,6 +100,15 @@
   text-align: center;
 }
 
+.edit_btn-myjobs,
+.delete_btn-myjobs{
+  margin-left: 0px;
+}
+.edit_btn_wrapper-myjobs{
+  width: 50%;
+  display: flex;
+}
+
 .edit_btn-myjobs {
   background-color: green;
 }
