@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../../main";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { motion } from "framer-motion";
-import { FiX } from "react-icons/fi"; // Import the close icon
-import "./Navbar.css"; // Import the CSS file
+import { FiX } from "react-icons/fi";
+import "./Navbar.css";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -23,12 +23,19 @@ const Navbar = () => {
       );
       toast.success(response.data.message);
       setIsAuthorized(false);
+      sessionStorage.removeItem("greetingShown");
       navigateTo("/login");
     } catch (error) {
       toast.error(error.response.data.message);
       setIsAuthorized(true);
     }
   };
+
+  useEffect(() => {
+    if (!isAuthorized) {
+      setShow(false);
+    }
+  }, [isAuthorized]);
 
   const sidebarVariants = {
     open: {
@@ -51,6 +58,11 @@ const Navbar = () => {
 
   return (
     <div>
+      {isAuthorized && (
+        <div className="hamburgerMenu" onClick={() => setShow(!show)}>
+          {show ? <FiX /> : <GiHamburgerMenu />}
+        </div>
+      )}
       <motion.nav
         className={`sidebar ${isAuthorized ? "navbarShow" : "navbarHide"}`}
         animate={show ? "open" : "closed"}
@@ -97,9 +109,6 @@ const Navbar = () => {
           </ul>
         </div>
       </motion.nav>
-      <div className="hamburgerMenu" onClick={() => setShow(!show)}>
-        {show ? <FiX /> : <GiHamburgerMenu />}
-      </div>
     </div>
   );
 };
