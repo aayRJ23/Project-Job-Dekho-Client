@@ -1,5 +1,5 @@
 import React from "react";
-import { FaMicrosoft, FaApple, FaGoogle, FaFacebook, FaAmazon } from "react-icons/fa";
+import { FaMicrosoft, FaApple, FaGoogle, FaFacebook, FaAmazon, FaLinkedin } from "react-icons/fa";
 import './Home.css';
 
 const PopularCompanies = () => {
@@ -39,8 +39,15 @@ const PopularCompanies = () => {
       openPositions: 5,
       icon: <FaApple />,
     },
+    {
+      id: 6,
+      title: "LinkedIn",
+      location: "Delhi, India",
+      openPositions: 12,
+      icon: <FaLinkedin />,
+    },
   ];
-  
+
   return (
     <div className="companies-popularCompanies">
       <div className="container-popularCompanies">
