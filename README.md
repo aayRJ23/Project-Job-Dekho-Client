@@ -1,4 +1,4 @@
-# PROJECT JOB DEKHO CLIENT
+# PROJECT-JOB-DEKHO-CLIENT
 
 ## Introduction
 
@@ -79,7 +79,7 @@ To get started with the project, follow these steps:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/PROJECT-JOB-DEKHO-CLIENT.git
+   git clone https://github.com/(my_username)/PROJECT-JOB-DEKHO-CLIENT.git
    ```
 
 2. **Navigate to the project directory:**
@@ -97,7 +97,7 @@ To get started with the project, follow these steps:
 4. **Start the development server:**
 
    ```bash
-   npm start
+   npm run dev
    ```
 ---
 
