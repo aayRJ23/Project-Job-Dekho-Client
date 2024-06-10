@@ -19,7 +19,9 @@
   max-width: 90%;
   max-height: 90%;
   overflow: auto;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .close {
@@ -31,29 +33,66 @@
   background: transparent;
   border: none;
   outline: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .close svg {
   fill: #333;
 }
 
+.close:hover {
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+}
+
+.content-container {
+  display: flex;
+  align-items: center;
+}
+
 .min-image {
-  max-width: 100%;
+  max-width: 50%;
   max-height: 100%;
   display: block;
-  margin: 0 auto;
+  margin-right: 20px;
+}
+
+.modal-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
 }
 
 .modal-resume-name {
-  margin-top: 10px;
   font-size: 18px;
   color: black;
+  margin-bottom: 10px;
 }
 
-.resume-name {
-  font-weight: bold;
-  color: #ff7e5f;
+.download-button {
+  display: flex;
+  align-items: center;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
+.download-button .download-icon {
+  margin-right: 8px;
+}
+
+.download-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
 
 /* My applications */
 

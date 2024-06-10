@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./App.css";
 import { Context } from "./main";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -16,9 +16,11 @@ import MyApplications from "./components/Application/MyApplications";
 import PostJob from "./components/Job/PostJob";
 import NotFound from "./components/NotFound/NotFound";
 import MyJobs from "./components/Job/MyJobs";
+import Chatbot from "./components/Chatbot/Chatbot";
 
 const App = () => {
   const { isAuthorized, setIsAuthorized, setUser } = useContext(Context);
+  
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -35,7 +37,7 @@ const App = () => {
       }
     };
     fetchUser();
-  }, [isAuthorized]);
+  }, [isAuthorized, setUser, setIsAuthorized]);
 
   return (
     <>
@@ -55,6 +57,7 @@ const App = () => {
         </Routes>
         <Footer />
         <Toaster />
+        {isAuthorized && <Chatbot />}
       </BrowserRouter>
     </>
   );
