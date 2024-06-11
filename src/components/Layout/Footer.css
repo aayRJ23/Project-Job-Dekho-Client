@@ -1,93 +1,93 @@
 .footer {
-    width: 100%;
-    background-color: #0066cc; /* Glossy shiny blue background color */
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0;
-    border-top: 2px solid white; /* Top white border */
-  }
-  
+  width: 100%;
+  background-color: #0066cc; /* Glossy shiny blue background color */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  border-top: 2px solid white; /* Top white border */
+}
+
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.footerContent div {
+  margin: 10px 0;
+}
+
+.connectText {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.socialLinks {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+}
+
+.socialIcon {
+  border-radius: 50%;
+  padding: 10px 10px 5px 10px;
+  margin: 0 10px;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Added transition for background-color and color */
+}
+
+.socialIcon:hover {
+  transform: scale(1.2); /* Scale up on hover */
+}
+
+/* Individual icon colors */
+.socialIcon.facebook {
+  background-color: white; /* White circular background */
+  color: #3b5998; /* Facebook official color */
+}
+
+.socialIcon.youtube {
+  background-color: white; /* White circular background */
+  color: #FF0000; /* YouTube official color */
+}
+
+.socialIcon.linkedin {
+  background-color: white; /* White circular background */
+  color: #0077B5; /* LinkedIn official color */
+}
+
+.socialIcon.instagram {
+  background-color: white; /* White circular background */
+  color: #C13584; /* Instagram official color */
+}
+
+.socialIcon.github {
+  background-color: white; /* White circular background */
+  color: #181717; /* GitHub official color */
+}
+
+.socialIcon.twitter {
+  background-color: white; /* White circular background */
+  color: #1DA1F2; /* Twitter official color */
+}
+
+@media (max-width: 768px) {
   .footerContent {
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-    max-width: 1200px;
-    text-align: center;
   }
-  
-  .footerContent div {
-    margin: 10px 0;
-  }
-  
-  .connectText {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  
+
   .socialLinks {
-    display: flex;
-    align-items: center;
+    margin-top: 10px;
   }
-  
-  .socialIcon {
-    border-radius: 50%;
-    padding: 10px;
-    margin: 0 10px;
-    font-size: 1.5rem;
-    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Added transition for background-color and color */
+
+  .footerContent div {
+    margin: 5px 0;
   }
-  
-  .socialIcon:hover {
-    transform: scale(1.2); /* Scale up on hover */
-  }
-  
-  /* Individual icon colors */
-  .socialIcon.facebook {
-    background-color: white; /* White circular background */
-    color: #3b5998; /* Facebook official color */
-  }
-  
-  .socialIcon.youtube {
-    background-color: white; /* White circular background */
-    color: #FF0000; /* YouTube official color */
-  }
-  
-  .socialIcon.linkedin {
-    background-color: white; /* White circular background */
-    color: #0077B5; /* LinkedIn official color */
-  }
-  
-  .socialIcon.instagram {
-    background-color: white; /* White circular background */
-    color: #C13584; /* Instagram official color */
-  }
-  
-  .socialIcon.github {
-    background-color: white; /* White circular background */
-    color: #181717; /* GitHub official color */
-  }
-  
-  .socialIcon.twitter {
-    background-color: white; /* White circular background */
-    color: #1DA1F2; /* Twitter official color */
-  }
-  
-  @media (max-width: 768px) {
-    .footerContent {
-      flex-direction: column;
-    }
-  
-    .socialLinks {
-      margin-top: 10px;
-    }
-  
-    .footerContent div {
-      margin: 5px 0;
-    }
-  }
-  
+}
