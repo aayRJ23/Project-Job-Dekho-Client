@@ -20,6 +20,10 @@ const Chatbot = () => {
     }
   };
 
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
       {!isOpen && (
@@ -27,36 +31,41 @@ const Chatbot = () => {
           <AiOutlineRobot size={30} />
         </button>
       )}
-      {isOpen && (
-        <div className={`chatbot-container ${isOpen ? 'chatbot-open' : ''}`}>
-          <div className="chatbot-header">
-            <AiOutlineRobot size={20} />
-            AskMeAnything Bot
-            <span className="chatbot-online-dot"></span>
-            <AiOutlineClose className="chatbot-close-button" onClick={() => setIsOpen(false)} />
-          </div>
-          <div className="chatbot-messages">
-            {messages.map((msg, index) => (
-              <div key={index} className={`chatbot-message chatbot-${msg.sender}`}>
-                {msg.sender === 'bot' && <AiOutlineRobot className="chatbot-icon" />}
-                <div className="chatbot-text">{msg.text}</div>
-                {msg.sender === 'user' && <AiOutlineUser className="chatbot-icon" />}
-              </div>
-            ))}
-          </div>
-          <div className="chatbot-input-container">
-            <input
-              type="text"
-              className="chatbot-input"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            />
-            <button className="chatbot-send" onClick={handleSend}>
-              Send
-            </button>
-          </div>
-        </div>
-      )}
+      <div className={`chatbot-container ${isOpen ? 'chatbot-open' : 'chatbot-closed'}`}>
+        {isOpen && (
+          <>
+            <div className="chatbot-header">
+              <AiOutlineRobot size={20} />
+              AskMeAnything Bot
+              <span className="chatbot-online-dot"></span>
+              <AiOutlineClose className="chatbot-close-button" onClick={handleClose} />
+            </div>
+            <div className="chatbot-messages">
+              {messages.map((msg, index) => (
+                <div key={index} className={`chatbot-message-container chatbot-${msg.sender}`}>
+                  {msg.sender === 'bot' && <AiOutlineRobot className="chatbot-icon" />}
+                  <div className={`chatbot-message chatbot-${msg.sender}`}>
+                    <div className="chatbot-text">{msg.text}</div>
+                  </div>
+                  {msg.sender === 'user' && <AiOutlineUser className="chatbot-icon" />}
+                </div>
+              ))}
+            </div>
+            <div className="chatbot-input-container">
+              <input
+                type="text"
+                className="chatbot-input"
+                value={input}
+                placeholder="Enter your message here"
+                onChange={(e) => setInput(e.target.value)}
+              />
+              <button className="chatbot-send" onClick={handleSend}>
+                Send
+              </button>
+            </div>
+          </>
+        )}
+      </div>
     </>
   );
 };
