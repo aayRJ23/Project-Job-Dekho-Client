@@ -17,10 +17,11 @@ import PostJob from "./components/Job/PostJob";
 import NotFound from "./components/NotFound/NotFound";
 import MyJobs from "./components/Job/MyJobs";
 import Chatbot from "./components/Chatbot/Chatbot";
+import Details from "./components/Details/Details"; // Import the Details component
 
 const App = () => {
   const { isAuthorized, setIsAuthorized, setUser } = useContext(Context);
-  
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -58,6 +59,7 @@ const App = () => {
         <Footer />
         <Toaster />
         {isAuthorized && <Chatbot />}
+        <Details /> {/* Add the Details component here */}
       </BrowserRouter>
     </>
   );
