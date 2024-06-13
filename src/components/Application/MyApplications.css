@@ -307,6 +307,7 @@
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 0px;
   font-size: 16px;
 }
 
@@ -322,6 +323,7 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  margin-right: 0px;
 }
 
 .submit-button-applicationform:hover {
