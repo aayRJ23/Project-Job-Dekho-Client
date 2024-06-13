@@ -16,45 +16,57 @@ const MyApplications = () => {
   const navigateTo = useNavigate();
 
   useEffect(() => {
-    try {
-      if (user && user.role === "Employer") {
-        axios
-          .get("http://localhost:4000/api/v1/application/employer/getall", {
-            withCredentials: true,
-          })
-          .then((res) => {
-            setApplications(res.data.applications);
-          });
-      } else {
-        axios
-          .get("http://localhost:4000/api/v1/application/jobseeker/getall", {
-            withCredentials: true,
-          })
-          .then((res) => {
-            setApplications(res.data.applications);
-          });
+    const fetchApplications = async () => {
+      try {
+        const url =
+          user && user.role === "Employer"
+            ? "http://localhost:4000/api/v1/application/employer/getall"
+            : "http://localhost:4000/api/v1/application/jobseeker/getall";
+
+        const res = await axios.get(url, { withCredentials: true });
+        setApplications(res.data.applications);
+      } catch (error) {
+        toast.error(error.response.data.message);
       }
+    };
+
+    if (isAuthorized) {
+      fetchApplications();
+    } else {
+      navigateTo("/");
+    }
+  }, [isAuthorized, user, navigateTo]);
+
+  const deleteApplication = async (id) => {
+    try {
+      const res = await axios.delete(
+        `http://localhost:4000/api/v1/application/delete/${id}`,
+        { withCredentials: true }
+      );
+      toast.success(res.data.message);
+      setApplications((prevApplications) =>
+        prevApplications.filter((application) => application._id !== id)
+      );
     } catch (error) {
       toast.error(error.response.data.message);
     }
-  }, [isAuthorized]);
+  };
 
-  if (!isAuthorized) {
-    navigateTo("/");
-  }
-
-  const deleteApplication = (id) => {
+  const updateApplicationStatus = async (id, status) => {
     try {
-      axios
-        .delete(`http://localhost:4000/api/v1/application/delete/${id}`, {
-          withCredentials: true,
-        })
-        .then((res) => {
-          toast.success(res.data.message);
-          setApplications((prevApplication) =>
-            prevApplication.filter((application) => application._id !== id)
-          );
-        });
+      const res = await axios.patch(
+        `http://localhost:4000/api/v1/application/status/${id}`,
+        { status },
+        { withCredentials: true }
+      );
+      toast.success(res.data.message);
+      setApplications((prevApplications) =>
+        prevApplications.map((application) =>
+          application._id === id
+            ? { ...application, accepted: status }
+            : application
+        )
+      );
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -92,6 +104,8 @@ const MyApplications = () => {
               <EmployerCard
                 element={element}
                 key={element._id}
+                deleteApplication={deleteApplication}
+                updateApplicationStatus={updateApplicationStatus}
                 openModal={openModal}
                 index={index}
               />
@@ -110,7 +124,7 @@ export default MyApplications;
 
 const JobSeekerCard = ({ element, deleteApplication, openModal, index }) => {
   return (
-    <div className="job_seeker_card-myapplication">
+    <div className={`job_seeker_card-myapplication ${element.accepted === 1 ? "accepted" : ""} ${element.accepted === 0 ? "rejected" : ""}`}>
       <div className="number-tag">{index + 1}</div>
       <div className="detail">
         <p>
@@ -145,9 +159,18 @@ const JobSeekerCard = ({ element, deleteApplication, openModal, index }) => {
   );
 };
 
-const EmployerCard = ({ element, openModal, index }) => {
+const EmployerCard = ({ element, deleteApplication, updateApplicationStatus, openModal, index }) => {
+  const handleGmailClick = (email) => {
+    const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${email}`;
+    window.open(mailtoLink, "_blank");
+  };
+
   return (
-    <div className="job_seeker_card-myapplication">
+    <div
+      className={`job_seeker_card-myapplication ${element.accepted === 1 ? "accepted" : ""} ${
+        element.accepted === 0 ? "rejected" : ""
+      }`}
+    >
       <div className="number-tag">{index + 1}</div>
       <div className="detail">
         <p>
@@ -172,7 +195,32 @@ const EmployerCard = ({ element, openModal, index }) => {
           alt="resume"
           onClick={() => openModal(element.resume.url, element.name)}
         />
-        <p className="resume-name">{element.name.split(' ')[0]}'s Resume</p>
+        <p className="resume-name">{element.name.split(" ")[0]}'s Resume</p>
+      </div>
+      <div className="btn_area">
+        {element.accepted === 1 ? (
+          <>
+            <button className="accepted-btn">Accepted</button>
+            <button className="gmail-btn" onClick={() => handleGmailClick(element.email)}>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png"
+                alt="Gmail"
+              />
+              Redirect To Gmail
+            </button>
+          </>
+        ) : element.accepted === 0 ? (
+          <button className="rejected-btn">Rejected</button>
+        ) : (
+          <>
+            <button className="accept-btn" onClick={() => updateApplicationStatus(element._id, 1)}>
+              Accept Application
+            </button>
+            <button className="reject-btn" onClick={() => updateApplicationStatus(element._id, 0)}>
+              Reject Application
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

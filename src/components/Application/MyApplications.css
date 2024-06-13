@@ -131,6 +131,15 @@
   flex-direction: column;
   border: 2px solid black;
   position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.job_seeker_card-myapplication.accepted {
+  background-color: #ccffcc;
+}
+
+.job_seeker_card-myapplication.rejected {
+  background-color: #ffcccc;
 }
 
 .job_seeker_card-myapplication .number-tag {
@@ -178,20 +187,68 @@
 .job_seeker_card-myapplication .btn_area {
   margin-top: 20px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .job_seeker_card-myapplication .btn_area button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.accept-btn {
+  background-color: green;
+  color: white;
+}
+
+.accept-btn:hover {
+  background-color: darkgreen;
+}
+
+.reject-btn {
   background-color: red;
   color: white;
-  border: none;
-  padding: 10px 20px;
+}
+
+.reject-btn:hover {
+  background-color: darkred;
+}
+
+.accepted-btn {
+  background-color: lightgreen;
+  color: white;
+  pointer-events: none;
+}
+
+.rejected-btn {
+  background-color: brown;
+  color: white;
+  pointer-events: none;
+}
+
+.gmail-btn {
+  background-color: white;
+  color: #ea4335;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #ea4335;
   border-radius: 100px;
   cursor: pointer;
 }
 
-.job_seeker_card-myapplication .btn_area button:hover {
-  background-color: rgb(142, 2, 2);
+.gmail-btn img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.gmail-btn:hover {
+  background-color: #ea4335;
+  color: white;
 }
 
 .resume-img img {
