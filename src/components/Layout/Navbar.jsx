@@ -8,6 +8,8 @@ import { motion } from "framer-motion";
 import { FiX } from "react-icons/fi";
 import "./Navbar.css";
 
+import logo from "./jobdekhologo-nav.png";
+
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const { isAuthorized, setIsAuthorized, user } = useContext(Context);
@@ -69,6 +71,7 @@ const Navbar = () => {
         variants={sidebarVariants}
       >
         <div className="sidebarContainer">
+          <img src={logo} alt="JobDekho" className="sidebarLogo" /> {/* Add this line */}
           <ul className="sidebarMenu">
             <li>
               <Link to={"/"} onClick={() => setShow(false)}>

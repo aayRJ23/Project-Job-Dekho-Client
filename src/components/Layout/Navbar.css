@@ -23,6 +23,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative; /* Ensure children are positioned relative to this container */
+}
+
+.sidebarLogo {
+  position: absolute;
+  top: -10px;
+  right: 5px;
+  width: auto; /* Adjust width as needed */
+  height: 5rem;
 }
 
 .sidebarMenu {
@@ -30,7 +39,7 @@
   width: 100%;
   padding: 0;
   margin: 0;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .sidebarMenu li {
@@ -71,7 +80,7 @@
 }
 
 .logoutButton:hover {
-  background: #8400ff;/* Gradient effect on hover */
+  background: #8400ff; /* Gradient effect on hover */
   color: #ffffff; /* Red text */
   transition: all 0.8s ease-in-out;
 }
