@@ -150,11 +150,11 @@ const JobSeekerCard = ({ element, deleteApplication, openModal, index }) => {
           onClick={() => openModal(element.resume.url, element.name)}
         />
       </div>
-      <div className="btn_area">
+      {/* <div className="btn_area">
         <button onClick={() => deleteApplication(element._id)}>
           Delete Application
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -201,6 +201,7 @@
 .accept-btn {
   background-color: green;
   color: white;
+  margin-left: 0px;
 }
 
 .accept-btn:hover {
@@ -220,6 +221,7 @@
   background-color: lightgreen;
   color: white;
   pointer-events: none;
+  margin-left: 0px;
 }
 
 .rejected-btn {
