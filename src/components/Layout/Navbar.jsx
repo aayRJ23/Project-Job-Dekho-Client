@@ -10,7 +10,7 @@ import "./Navbar.css";
 
 import logo from "./jobdekhologo-nav.png";
 
-const Navbar = () => {
+const Navbar = ({ unreadCount, setUnreadCount }) => {
   const [show, setShow] = useState(false);
   const { isAuthorized, setIsAuthorized, user } = useContext(Context);
   const navigateTo = useNavigate();
@@ -19,9 +19,7 @@ const Navbar = () => {
     try {
       const response = await axios.get(
         "http://localhost:4000/api/v1/user/logout",
-        {
-          withCredentials: true,
-        }
+        { withCredentials: true }
       );
       toast.success(response.data.message);
       setIsAuthorized(false);
@@ -42,19 +40,11 @@ const Navbar = () => {
   const sidebarVariants = {
     open: {
       x: 0,
-      transition: {
-        type: "spring",
-        stiffness: 260,
-        damping: 20,
-      },
+      transition: { type: "spring", stiffness: 260, damping: 20 },
     },
     closed: {
       x: "-100%",
-      transition: {
-        type: "spring",
-        stiffness: 260,
-        damping: 20,
-      },
+      transition: { type: "spring", stiffness: 260, damping: 20 },
     },
   };
 
@@ -71,7 +61,7 @@ const Navbar = () => {
         variants={sidebarVariants}
       >
         <div className="sidebarContainer">
-          <img src={logo} alt="JobDekho" className="sidebarLogo" /> {/* Add this line */}
+          <img src={logo} alt="JobDekho" className="sidebarLogo" />
           <ul className="sidebarMenu">
             <li>
               <Link to={"/"} onClick={() => setShow(false)}>
@@ -104,6 +94,23 @@ const Navbar = () => {
                 </li>
               </>
             ) : null}
+
+            {/* ---- NOTIFICATIONS — no icon, centred text like all other items ---- */}
+            <li>
+              <Link
+                to={"/notifications"}
+                onClick={() => setShow(false)}
+                className="notif-nav-link"
+              >
+                NOTIFICATIONS
+                {unreadCount > 0 && (
+                  <span className="notif-badge">
+                    {unreadCount > 99 ? "99+" : unreadCount}
+                  </span>
+                )}
+              </Link>
+            </li>
+
             <li>
               <button className="logoutButton" onClick={handleLogout}>
                 LOGOUT

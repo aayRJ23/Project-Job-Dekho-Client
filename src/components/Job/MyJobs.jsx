@@ -13,6 +13,7 @@ const MyJobs = () => {
   const { isAuthorized, user } = useContext(Context);
 
   const navigateTo = useNavigate();
+
   // Fetching all jobs
   useEffect(() => {
     const fetchJobs = async () => {
@@ -29,6 +30,7 @@ const MyJobs = () => {
     };
     fetchJobs();
   }, []);
+
   if (!isAuthorized || (user && user.role !== "Employer")) {
     navigateTo("/");
   }
@@ -82,10 +84,32 @@ const MyJobs = () => {
     );
   };
 
+  // Summary counts
+  const activeJobs = myJobs.filter((job) => !job.expired).length;
+  const expiredJobs = myJobs.filter((job) => job.expired).length;
+
   return (
     <div className="myJobs-myjobs page-myjobs">
       <div className="container-myjobs">
         <h1 className="myjobs-header">Your Posted Jobs</h1>
+
+        {/* Count summary strip */}
+        {myJobs.length > 0 && (
+          <div className="myjobs-summary-strip">
+            <span className="myjobs-summary-item">
+              Total Posted &nbsp;<strong>{myJobs.length}</strong>
+            </span>
+            <span className="myjobs-summary-divider">|</span>
+            <span className="myjobs-summary-item myjobs-summary-active">
+              Active &nbsp;<strong>{activeJobs}</strong>
+            </span>
+            <span className="myjobs-summary-divider">|</span>
+            <span className="myjobs-summary-item myjobs-summary-expired">
+              Expired &nbsp;<strong>{expiredJobs}</strong>
+            </span>
+          </div>
+        )}
+
         {myJobs.length > 0 ? (
           <div className="banner-myjobs">
             {myJobs.map((element) => (
@@ -142,36 +166,16 @@ const MyJobs = () => {
                         }
                         disabled={editingMode !== element._id}
                       >
-                        <option value="Graphics & Design">
-                          Graphics & Design
-                        </option>
-                        <option value="Mobile App Development">
-                          Mobile App Development
-                        </option>
-                        <option value="Frontend Web Development">
-                          Frontend Web Development
-                        </option>
-                        <option value="MERN Stack Development">
-                          MERN STACK Development
-                        </option>
-                        <option value="Account & Finance">
-                          Account & Finance
-                        </option>
-                        <option value="Artificial Intelligence">
-                          Artificial Intelligence
-                        </option>
-                        <option value="Video Animation">
-                          Video Animation
-                        </option>
-                        <option value="MEAN Stack Development">
-                          MEAN STACK Development
-                        </option>
-                        <option value="MEVN Stack Development">
-                          MEVN STACK Development
-                        </option>
-                        <option value="Data Entry Operator">
-                          Data Entry Operator
-                        </option>
+                        <option value="Graphics & Design">Graphics & Design</option>
+                        <option value="Mobile App Development">Mobile App Development</option>
+                        <option value="Frontend Web Development">Frontend Web Development</option>
+                        <option value="MERN Stack Development">MERN STACK Development</option>
+                        <option value="Account & Finance">Account & Finance</option>
+                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+                        <option value="Video Animation">Video Animation</option>
+                        <option value="MEAN Stack Development">MEAN STACK Development</option>
+                        <option value="MEVN Stack Development">MEVN STACK Development</option>
+                        <option value="Data Entry Operator">Data Entry Operator</option>
                       </select>
                     </div>
                     <div>
@@ -298,8 +302,8 @@ const MyJobs = () => {
             ))}
           </div>
         ) : (
-          <p>
-            You've not posted any job or may be you deleted all of your jobs!
+          <p className="myjobs-empty-msg">
+            You&apos;ve not posted any job or may be you deleted all of your jobs!
           </p>
         )}
       </div>

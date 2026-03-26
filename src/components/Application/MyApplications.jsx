@@ -4,6 +4,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import ResumeModal from "./ResumeModal";
+import "./MyApplications.css";
 
 const MyApplications = () => {
   const { user } = useContext(Context);
@@ -82,30 +83,58 @@ const MyApplications = () => {
     setModalOpen(false);
   };
 
+  const isEmployer = user && user.role === "Employer";
+  const total = applications.length;
+  const accepted = applications.filter((a) => a.accepted === 1).length;
+  const rejected = applications.filter((a) => a.accepted === 0).length;
+  const pending = total - accepted - rejected;
+
   return (
     <section className="my_applications page">
       <h1 className="heading-myapplication">
-        {user && user.role === "Job Seeker" ? "My Applications" : "Applications From Job Seekers"}
+        {isEmployer ? "Applications From Job Seekers" : "My Applications"}
       </h1>
+
+      {/* Count summary strip */}
+      {total > 0 && (
+        <div className="myapp-summary-strip">
+          <span className="myapp-summary-item">
+            Total &nbsp;<strong>{total}</strong>
+          </span>
+          <span className="myapp-summary-divider">|</span>
+          <span className="myapp-summary-item myapp-summary-pending">
+            {isEmployer ? "Pending Review" : "Pending"} &nbsp;<strong>{pending}</strong>
+          </span>
+          <span className="myapp-summary-divider">|</span>
+          <span className="myapp-summary-item myapp-summary-accepted">
+            Accepted &nbsp;<strong>{accepted}</strong>
+          </span>
+          <span className="myapp-summary-divider">|</span>
+          <span className="myapp-summary-item myapp-summary-rejected">
+            Rejected &nbsp;<strong>{rejected}</strong>
+          </span>
+        </div>
+      )}
+
       <div className="container-myapplication">
         {applications.length <= 0 ? (
           <h4>No Applications Found</h4>
         ) : (
           applications.map((element, index) => {
-            return user && user.role === "Job Seeker" ? (
-              <JobSeekerCard
-                element={element}
-                key={element._id}
-                deleteApplication={deleteApplication}
-                openModal={openModal}
-                index={index}
-              />
-            ) : (
+            return isEmployer ? (
               <EmployerCard
                 element={element}
                 key={element._id}
                 deleteApplication={deleteApplication}
                 updateApplicationStatus={updateApplicationStatus}
+                openModal={openModal}
+                index={index}
+              />
+            ) : (
+              <JobSeekerCard
+                element={element}
+                key={element._id}
+                deleteApplication={deleteApplication}
                 openModal={openModal}
                 index={index}
               />
@@ -142,6 +171,15 @@ const JobSeekerCard = ({ element, deleteApplication, openModal, index }) => {
         <p>
           <span>CoverLetter:</span> {element.coverLetter}
         </p>
+        {element.accepted === 1 && (
+          <p className="status-tag accepted-tag">✅ Your application was Accepted</p>
+        )}
+        {element.accepted === 0 && (
+          <p className="status-tag rejected-tag">❌ Your application was Rejected</p>
+        )}
+        {element.accepted !== 0 && element.accepted !== 1 && (
+          <p className="status-tag pending-tag">⏳ Awaiting Employer Review</p>
+        )}
       </div>
       <div className="resume-img">
         <img
@@ -150,11 +188,6 @@ const JobSeekerCard = ({ element, deleteApplication, openModal, index }) => {
           onClick={() => openModal(element.resume.url, element.name)}
         />
       </div>
-      {/* <div className="btn_area">
-        <button onClick={() => deleteApplication(element._id)}>
-          Delete Application
-        </button>
-      </div> */}
     </div>
   );
 };
@@ -195,7 +228,7 @@ const EmployerCard = ({ element, deleteApplication, updateApplicationStatus, ope
           alt="resume"
           onClick={() => openModal(element.resume.url, element.name)}
         />
-        <p className="resume-name">{element.name.split(" ")[0]}'s Resume</p>
+        <p className="resume-name">{element.name.split(" ")[0]}&apos;s Resume</p>
       </div>
       <div className="btn_area">
         {element.accepted === 1 ? (

@@ -1,0 +1,322 @@
+/* =============================================
+   Notifications Page — matches Job Dekho theme
+   ============================================= */
+
+/* ---------- Page wrapper ---------- */
+.notif-page {
+  min-height: 100vh;
+  padding: 2rem 1.5rem 4rem;
+  background-color: #f9f9f9;
+  margin-left: 0;
+}
+
+/* ---------- Page Heading ---------- */
+/* No icon — text-only, centred, uppercase like all other page headings */
+.notif-page-heading {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #f15a29;
+  text-align: center;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.notif-heading-badge {
+  background-color: #f15a29;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  margin-left: 0.4rem;
+  animation: notif-pulse 1.5s ease-in-out infinite;
+}
+
+/* ---------- Count summary strip ---------- */
+.notif-summary-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  max-width: 780px;
+  margin: 0 auto 1.4rem;
+  background: #fff;
+  border-radius: 50px;
+  padding: 0.55rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.notif-summary-item {
+  color: #555;
+  font-weight: 500;
+}
+
+.notif-summary-item strong {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.notif-summary-total strong   { color: #1a1a2e; }
+.notif-summary-unread strong  { color: #f15a29; }
+.notif-summary-read strong    { color: #16a34a; }
+
+.notif-summary-divider {
+  color: #ddd;
+  font-weight: 300;
+  font-size: 1.1rem;
+}
+
+/* ---------- Top bar (Mark All) ---------- */
+.notif-topbar {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 780px;
+  margin: 0 auto 1rem;
+}
+
+.notif-markall-btn {
+  display: flex;
+  align-items: center;
+  background-color: #1a1a2e;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 0.5rem 1.3rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.notif-markall-btn:hover {
+  background-color: #f15a29;
+}
+
+/* ---------- Notifications list container ---------- */
+.notif-container {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* ---------- Individual Card ---------- */
+.notif-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  border-left: 5px solid transparent;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.notif-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Unread: orange left border + slight tint */
+.notif-unread {
+  border-left-color: #f15a29;
+  background: #fff7f4;
+}
+
+/* Read: grey left border */
+.notif-read {
+  border-left-color: #ddd;
+  opacity: 0.82;
+}
+
+/* ---------- Middle content ---------- */
+.notif-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notif-type-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+  display: inline-block;
+}
+
+.notif-type-label.notif-type-job       { color: #3b82f6; }
+.notif-type-label.notif-type-submitted { color: #f15a29; }
+.notif-type-label.notif-type-accepted  { color: #16a34a; }
+.notif-type-label.notif-type-rejected  { color: #dc2626; }
+
+.notif-message {
+  font-size: 0.96rem;
+  color: #333;
+  margin: 0.1rem 0 0.3rem;
+  line-height: 1.45;
+}
+
+.notif-meta-info {
+  font-size: 0.82rem;
+  color: #666;
+  margin: 0.1rem 0;
+}
+
+.notif-time {
+  font-size: 0.76rem;
+  color: #aaa;
+  display: block;
+  margin-top: 0.35rem;
+}
+
+/* ---------- Right side ---------- */
+.notif-right {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Orange dot for unread */
+.notif-new-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #f15a29;
+  border-radius: 50%;
+  display: block;
+}
+
+/* Mark as read button */
+.notif-mark-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #aaa;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.notif-mark-btn:hover {
+  color: #16a34a;
+}
+
+/* "Read" label */
+.notif-read-label {
+  font-size: 0.72rem;
+  color: #bbb;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ---------- Loading state ---------- */
+.notif-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  color: #888;
+}
+
+.notif-spinner {
+  width: 44px;
+  height: 44px;
+  border: 4px solid #f0e6e1;
+  border-top-color: #f15a29;
+  border-radius: 50%;
+  animation: notif-spin 0.7s linear infinite;
+}
+
+@keyframes notif-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Empty state ---------- */
+.notif-empty {
+  text-align: center;
+  margin-top: 4rem;
+  color: #bbb;
+}
+
+.notif-empty-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.notif-empty p {
+  font-size: 1.1rem;
+}
+
+/* ---------- Navbar NOTIFICATIONS link ---------- */
+/* Remove bell icon styles — text only, centred like other nav items */
+.notif-nav-link {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;    /* centre like HOME / ALL JOBS etc. */
+  gap: 0.5rem;
+  width: 100%;
+  text-decoration: none;
+  position: relative;
+}
+
+/* Badge: float to the right of the text block, absolutely positioned */
+.notif-badge {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #f15a29;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  animation: notif-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes notif-pulse {
+  0%, 100% { transform: translateY(-50%) scale(1); }
+  50%       { transform: translateY(-50%) scale(1.18); }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .notif-page-heading {
+    font-size: 1.7rem;
+  }
+
+  .notif-card {
+    flex-wrap: wrap;
+    padding: 0.9rem 1rem;
+  }
+
+  .notif-right {
+    flex-direction: row;
+    gap: 0.6rem;
+    width: 100%;
+    margin-top: 0.4rem;
+  }
+
+  .notif-summary-strip {
+    font-size: 0.82rem;
+    padding: 0.5rem 1rem;
+  }
+}

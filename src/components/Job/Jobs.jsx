@@ -33,13 +33,53 @@ const Jobs = () => {
     setSearch(e.target.value);
   };
 
-  const filteredJobs = jobs.jobs?.filter((job) =>
+  const allJobs = jobs.jobs || [];
+  const filteredJobs = allJobs.filter((job) =>
     job.title.toLowerCase().includes(search.toLowerCase())
   );
+
+  // Count breakdown by category for the summary
+  const categoryMap = {};
+  allJobs.forEach((job) => {
+    categoryMap[job.category] = (categoryMap[job.category] || 0) + 1;
+  });
+  const topCategories = Object.entries(categoryMap)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 3);
 
   return (
     <section className="jobs-page-alljobs">
       <h1 className="jobs-header">All Available Jobs</h1>
+
+      {/* Count summary strip */}
+      {allJobs.length > 0 && (
+        <div className="jobs-summary-strip">
+          <span className="jobs-summary-item">
+            Total Listings &nbsp;<strong>{allJobs.length}</strong>
+          </span>
+          {search && (
+            <>
+              <span className="jobs-summary-divider">|</span>
+              <span className="jobs-summary-item jobs-summary-filtered">
+                Showing &nbsp;<strong>{filteredJobs.length}</strong>&nbsp; result{filteredJobs.length !== 1 ? "s" : ""} for &quot;{search}&quot;
+              </span>
+            </>
+          )}
+          {topCategories.length > 0 && !search && (
+            <>
+              <span className="jobs-summary-divider">|</span>
+              <span className="jobs-summary-item jobs-summary-categories">
+                Top: {topCategories.map(([cat, count]) => (
+                  <span key={cat} className="jobs-summary-tag">
+                    {cat} ({count})
+                  </span>
+                ))}
+              </span>
+            </>
+          )}
+        </div>
+      )}
+
       <div className="container-alljobs">
         <div className="search-bar">
           <input
@@ -51,6 +91,9 @@ const Jobs = () => {
           <FaSearch className="search-icon" />
         </div>
         <div className="jobs-banner-alljobs">
+          {filteredJobs.length === 0 && search && (
+            <p className="jobs-no-results">No jobs found matching &quot;{search}&quot;</p>
+          )}
           {filteredJobs &&
             filteredJobs.map((element) => {
               return (

@@ -17,19 +17,25 @@ import PostJob from "./components/Job/PostJob";
 import NotFound from "./components/NotFound/NotFound";
 import MyJobs from "./components/Job/MyJobs";
 import Chatbot from "./components/Chatbot/Chatbot";
-import Details from "./components/Details/Details"; // Import the Details component
+import Details from "./components/Details/Details";
+import Notifications from "./components/Notifications/Notifications";
+import socket from "./socket";
 
 const App = () => {
-  const { isAuthorized, setIsAuthorized, setUser } = useContext(Context);
+  const { isAuthorized, setIsAuthorized, setUser, user } = useContext(Context);
+  const [unreadCount, setUnreadCount] = useState(0);
 
+  // Shared live notifications list — updated by socket so Notifications page
+  // can consume it without a re-fetch on every new message.
+  const [liveNotifications, setLiveNotifications] = useState(null); // null = not yet loaded
+
+  // Fetch user on load / auth change
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
           "http://localhost:4000/api/v1/user/getuser",
-          {
-            withCredentials: true,
-          }
+          { withCredentials: true }
         );
         setUser(response.data.user);
         setIsAuthorized(true);
@@ -40,10 +46,66 @@ const App = () => {
     fetchUser();
   }, [isAuthorized, setUser, setIsAuthorized]);
 
+  // Connect socket and register user once authorized
+  useEffect(() => {
+    if (isAuthorized && user && user._id) {
+      if (!socket.connected) {
+        socket.connect();
+      }
+      // Re-register on every reconnect too
+      socket.emit("register", user._id);
+
+      const handleReconnect = () => {
+        socket.emit("register", user._id);
+      };
+
+      // Listen for incoming real-time notifications
+      const handleNewNotification = (notification) => {
+        // Bump unread badge count
+        setUnreadCount((prev) => prev + 1);
+
+        // Prepend the live notification so the Notifications page updates instantly
+        setLiveNotifications((prev) =>
+          prev ? [notification, ...prev] : [notification]
+        );
+      };
+
+      socket.on("new_notification", handleNewNotification);
+      socket.on("reconnect", handleReconnect);
+
+      return () => {
+        socket.off("new_notification", handleNewNotification);
+        socket.off("reconnect", handleReconnect);
+      };
+    } else {
+      // Disconnect socket on logout
+      if (socket.connected) {
+        socket.disconnect();
+      }
+      setUnreadCount(0);
+      setLiveNotifications(null);
+    }
+  }, [isAuthorized, user]);
+
+  // Fetch initial unread count + notification list from DB when user logs in
+  useEffect(() => {
+    if (isAuthorized) {
+      axios
+        .get("http://localhost:4000/api/v1/notification/getall", {
+          withCredentials: true,
+        })
+        .then((res) => {
+          setUnreadCount(res.data.unreadCount);
+          setLiveNotifications(res.data.notifications);
+        })
+        .catch(() => {});
+    }
+  }, [isAuthorized]);
+
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        <Navbar unreadCount={unreadCount} setUnreadCount={setUnreadCount} />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -54,12 +116,22 @@ const App = () => {
           <Route path="/applications/me" element={<MyApplications />} />
           <Route path="/job/post" element={<PostJob />} />
           <Route path="/job/me" element={<MyJobs />} />
+          <Route
+            path="/notifications"
+            element={
+              <Notifications
+                setUnreadCount={setUnreadCount}
+                liveNotifications={liveNotifications}
+                setLiveNotifications={setLiveNotifications}
+              />
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
         <Toaster />
         {isAuthorized && <Chatbot />}
-        <Details /> {/* Add the Details component here */}
+        <Details />
       </BrowserRouter>
     </>
   );
