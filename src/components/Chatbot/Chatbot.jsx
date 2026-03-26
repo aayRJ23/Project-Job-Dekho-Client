@@ -2,29 +2,29 @@ import React, { useState, useEffect, useRef } from "react";
 import "./Chatbot.css";
 import { AiOutlineRobot, AiOutlineClose, AiOutlineSend } from "react-icons/ai";
 
+const CHATBOT_URL = import.meta.env.VITE_CHATBOT_URL || "http://127.0.0.1:5000";
+
 const Chatbot = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen]     = useState(false);
   const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState("");
+  const [input, setInput]       = useState("");
   const [isTyping, setIsTyping] = useState(false);
 
   const messagesEndRef = useRef(null);
 
+  /* Auto-scroll to latest message */
   useEffect(() => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
 
+  /* Greeting on first open */
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       setTimeout(() => {
-        setMessages([
-          {
-            text: "👋 Hello! I'm the Job Dekho assistant. How can I help you today?",
-            sender: "bot",
-          },
-        ]);
+        setMessages([{
+          text: "👋 Hello! I'm the Job Dekho assistant. How can I help you today?",
+          sender: "bot",
+        }]);
       }, 350);
     }
   }, [isOpen]);
@@ -38,7 +38,7 @@ const Chatbot = () => {
     setIsTyping(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/predict", {
+      const response = await fetch(`${CHATBOT_URL}/predict`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ "User Input": trimmed }),
@@ -46,26 +46,18 @@ const Chatbot = () => {
       const data = await response.json();
       setTimeout(() => {
         setIsTyping(false);
-        setMessages((prev) => [
-          ...prev,
-          {
-            text:
-              data.Prediction ||
-              "Sorry, I couldn't understand that. Try rephrasing!",
-            sender: "bot",
-          },
-        ]);
+        setMessages((prev) => [...prev, {
+          text: data.Prediction || "Sorry, I couldn't understand that. Try rephrasing!",
+          sender: "bot",
+        }]);
       }, 600);
     } catch {
       setTimeout(() => {
         setIsTyping(false);
-        setMessages((prev) => [
-          ...prev,
-          {
-            text: "Error connecting to server. Please try again later.",
-            sender: "bot",
-          },
-        ]);
+        setMessages((prev) => [...prev, {
+          text: "Error connecting to server. Please try again later.",
+          sender: "bot",
+        }]);
       }, 600);
     }
   };
@@ -80,32 +72,23 @@ const Chatbot = () => {
   return (
     <>
       {!isOpen && (
-        <button
-          className="chatbot-toggle-button"
-          onClick={() => setIsOpen(true)}
-        >
+        <button className="chatbot-toggle-button" onClick={() => setIsOpen(true)}>
           <AiOutlineRobot size={26} />
           <span className="chatbot-toggle-label">Ask Me</span>
         </button>
       )}
 
-      <div
-        className={`chatbot-container ${
-          isOpen ? "chatbot-open" : "chatbot-closed"
-        }`}
-      >
+      <div className={`chatbot-container ${isOpen ? "chatbot-open" : "chatbot-closed"}`}>
         {isOpen && (
           <>
-            {/* Header */}
+            {/* ── Header ── */}
             <div className="chatbot-header">
               <div className="chatbot-header-left">
                 <div className="chatbot-avatar">
                   <AiOutlineRobot size={18} />
                 </div>
                 <div>
-                  <div className="chatbot-header-title">
-                    Job Dekho Assistant
-                  </div>
+                  <div className="chatbot-header-title">Job Dekho Assistant</div>
                   <div className="chatbot-header-status">
                     <span className="chatbot-online-dot" />
                     Online
@@ -118,7 +101,7 @@ const Chatbot = () => {
               />
             </div>
 
-            {/* Messages */}
+            {/* ── Messages ── */}
             <div className="chatbot-messages">
               {messages.map((msg, index) =>
                 msg.sender === "bot" ? (
@@ -135,7 +118,6 @@ const Chatbot = () => {
                 )
               )}
 
-              {/* Typing indicator */}
               {isTyping && (
                 <div className="chatbot-bot-row">
                   <div className="chatbot-bot-icon">
@@ -152,7 +134,7 @@ const Chatbot = () => {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input */}
+            {/* ── Input ── */}
             <div className="chatbot-input-area">
               <input
                 type="text"
@@ -161,11 +143,10 @@ const Chatbot = () => {
                 placeholder="Type your message…"
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
+                autoComplete="off"
               />
               <button
-                className={`chatbot-send-btn${
-                  input.trim() ? " send-active" : ""
-                }`}
+                className={`chatbot-send-btn${input.trim() ? " send-active" : ""}`}
                 onClick={handleSend}
                 disabled={!input.trim()}
               >
