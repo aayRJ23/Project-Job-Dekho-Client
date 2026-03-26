@@ -46,28 +46,35 @@ const JobDetails = () => {
         <h3 className="heading-job-details">Job Details</h3>
         <div className="banner-job-details">
           <p className="field-job-details">
-            <span className="label-job-details">Title:</span> <span>{job.title}</span>
+            <span className="label-job-details">Title:</span>
+            <span>{job.title}</span>
           </p>
           <p className="field-job-details">
-            <span className="label-job-details">Category:</span> <span>{job.category}</span>
+            <span className="label-job-details">Category:</span>
+            <span>{job.category}</span>
           </p>
           <p className="field-job-details">
-            <span className="label-job-details">Country:</span> <span>{job.country}</span>
+            <span className="label-job-details">Country:</span>
+            <span>{job.country}</span>
           </p>
           <p className="field-job-details">
-            <span className="label-job-details">City:</span> <span>{job.city}</span>
+            <span className="label-job-details">City:</span>
+            <span>{job.city}</span>
           </p>
           <p className="field-job-details">
-            <span className="label-job-details">Location:</span> <span className="location-data-job-details">{job.location}</span>
+            <span className="label-job-details">Location:</span>
+            <span className="location-data-job-details">{job.location}</span>
           </p>
           <p className="field-job-details description-job-details">
-            <span className="label-job-details">Description:</span> <span className="desc-data-job-details">{job.description}</span>
+            <span className="label-job-details">Description:</span>
+            <span className="desc-data-job-details">{job.description}</span>
           </p>
           <p className="field-job-details">
-            <span className="label-job-details">Job Posted On:</span> <span>{formatDateTime(job.jobPostedOn)}</span>
+            <span className="label-job-details">Job Posted On:</span>
+            <span>{formatDateTime(job.jobPostedOn)}</span>
           </p>
           <p className="field-job-details">
-            <span className="label-job-details">Salary:</span>{" "}
+            <span className="label-job-details">Salary:</span>
             {job.fixedSalary ? (
               <span>{job.fixedSalary} &#8377;</span>
             ) : (
@@ -79,7 +86,9 @@ const JobDetails = () => {
           {user && user.role === "Employer" ? (
             <></>
           ) : (
-            <Link to={`/application/${job._id}`} className="apply-link-job-details">Apply Now</Link>
+            <Link to={`/application/${job._id}`} className="apply-link-job-details">
+              Apply Now
+            </Link>
           )}
         </div>
       </div>

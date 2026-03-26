@@ -1,42 +1,43 @@
+/* ================================================
+   My Jobs (View Your Posted Jobs) — Job Dekho theme
+   ================================================ */
+
 .page-myjobs {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  padding: 2rem 1.5rem 4rem;
+  background-color: #f9f9f9;
 }
 
 .container-myjobs {
-  width: 100%;
-  max-width: 800px;
-  background: #f4f4f4;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 2px solid black;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
+/* Heading */
 .myjobs-header {
-  color: #ff7e5f;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #f15a29;
   text-align: center;
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
 
-/* ---------- Count summary strip ---------- */
+/* Summary strip */
 .myjobs-summary-strip {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.75rem;
+  max-width: 600px;
+  margin: 0 auto 1.8rem;
   background: #fff;
   border-radius: 50px;
   padding: 0.55rem 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
   font-size: 0.9rem;
-  margin-bottom: 1.4rem;
 }
 
 .myjobs-summary-item {
@@ -47,10 +48,10 @@
 .myjobs-summary-item strong {
   font-weight: 700;
   font-size: 1rem;
-  color: #1a1a2e;
+  color: #f15a29;
 }
 
-.myjobs-summary-active strong  { color: #16a34a; }
+.myjobs-summary-active strong { color: #16a34a; }
 .myjobs-summary-expired strong { color: #dc2626; }
 
 .myjobs-summary-divider {
@@ -58,128 +59,274 @@
   font-size: 1.1rem;
 }
 
+/* Empty message */
 .myjobs-empty-msg {
   text-align: center;
   color: #999;
   font-size: 1rem;
-  margin-top: 1rem;
+  margin-top: 3rem;
 }
 
-/* ---------- Existing styles preserved ---------- */
+/* Cards banner */
 .banner-myjobs {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.2rem;
 }
 
+/* Individual card */
 .card-myjobs {
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 100%;
-  border: 2px solid #ff7e5f;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid #f15a29;
+  padding: 1.5rem 1.8rem;
+  transition: box-shadow 0.2s, transform 0.2s;
 }
 
+.card-myjobs:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Card content grid */
 .content-myjobs {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-.short_fields-myjobs,
-.long_field-myjobs {
+/* Short fields (left column) */
+.short_fields-myjobs {
+  flex: 1;
+  min-width: 260px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.7rem;
 }
 
-.short_fields-myjobs div,
-.long_field-myjobs div {
+.short_fields-myjobs > div {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.6rem;
 }
 
-.short_fields-myjobs span,
-.long_field-myjobs span {
-  color: #ff7e5f;
-  min-width: 150px;
-  font-size: 16px;
-  font-weight: bold;
+.short_fields-myjobs span {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #f15a29;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  min-width: 80px;
+  flex-shrink: 0;
 }
 
 .short_fields-myjobs input,
-.long_field-myjobs textarea,
 .short_fields-myjobs select {
-  width: calc(100% - 150px);
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
+  flex: 1;
+  padding: 0.45rem 0.8rem;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #333;
+  background: #fafafa;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.short_fields-myjobs input:not(:disabled):focus,
+.short_fields-myjobs select:not(:disabled):focus {
+  border-color: #f15a29;
+  background: #fff;
+}
+
+.short_fields-myjobs input:disabled,
+.short_fields-myjobs select:disabled {
+  background: #f5f5f5;
+  cursor: default;
+}
+
+/* Long fields (right column) */
+.long_field-myjobs {
+  flex: 1;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.long_field-myjobs > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.long_field-myjobs span {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #f15a29;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .long_field-myjobs textarea {
-  height: 100px;
+  padding: 0.55rem 0.9rem;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #333;
+  background: #fafafa;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+.long_field-myjobs textarea:not(:disabled):focus {
+  border-color: #f15a29;
+  background: #fff;
+}
+
+.long_field-myjobs textarea:disabled {
+  background: #f5f5f5;
+  cursor: default;
+}
+
+/* Button row */
 .button_wrapper-myjobs {
   display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
-.edit_btn-myjobs,
-.check_btn-myjobs,
-.cross_btn-myjobs,
-.delete_btn-myjobs {
-  border: none;
-  color: white;
-  padding: 10px 0;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 14px;
-  width: 150px;
-  text-align: center;
-}
-
-.edit_btn-myjobs,
-.delete_btn-myjobs {
-  margin-left: 0px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+  flex-wrap: wrap;
 }
 
 .edit_btn_wrapper-myjobs {
-  width: 50%;
   display: flex;
+  gap: 0.6rem;
+  align-items: center;
 }
 
 .edit_btn-myjobs {
-  background-color: green;
+  background: #1a1a2e;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s;
 }
 
 .edit_btn-myjobs:hover {
-  background-color: darkgreen;
+  background: #f15a29;
 }
 
-.delete_btn-myjobs {
-  background-color: red;
-}
-
-.delete_btn-myjobs:hover {
-  background-color: darkred;
-}
-
+/* ── FIX: check & cross buttons — icon must be visible ── */
 .check_btn-myjobs {
-  background-color: #4caf50;
-  margin-right: 5px;
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;        /* prevent flex shrink */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;        /* SVG inherits this as currentColor fallback */
+  line-height: 1;
+  overflow: visible;      /* don't clip the SVG */
+  transition: background 0.2s;
+  padding: 0;
+}
+
+.check_btn-myjobs svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  color: #fff;
+  overflow: visible;
+  flex-shrink: 0;
+}
+
+.check_btn-myjobs:hover {
+  background: #15803d;
 }
 
 .cross_btn-myjobs {
-  background-color: #f44336;
+  background: #f4f4f4;
+  color: #555;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;        /* prevent flex shrink */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  overflow: visible;
+  transition: background 0.2s, color 0.2s;
+  padding: 0;
 }
 
-.no-jobs-message-myjobs {
-  text-align: center;
-  color: #999;
-  font-size: 18px;
+.cross_btn-myjobs svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  color: #555;
+  overflow: visible;
+  flex-shrink: 0;
+}
+
+.cross_btn-myjobs:hover {
+  background: #e8e8e8;
+}
+
+.cross_btn-myjobs:hover svg {
+  color: #333;
+}
+
+/* ── end fix ── */
+
+.delete_btn-myjobs {
+  background: #fff0eb;
+  color: #f15a29;
+  border: 1.5px solid #f15a29;
+  border-radius: 50px;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+
+.delete_btn-myjobs:hover {
+  background: #f15a29;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .myjobs-header {
+    font-size: 1.7rem;
+  }
+
+  .content-myjobs {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .card-myjobs {
+    padding: 1.2rem 1rem;
+  }
 }

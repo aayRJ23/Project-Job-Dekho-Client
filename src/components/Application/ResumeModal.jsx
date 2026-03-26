@@ -18,19 +18,24 @@ const ResumeModal = ({ imageUrl, name, onClose }) => {
   };
 
   return (
-    <div className="resume-modal">
-      <div className="modal-content">
-        <button className="close" onClick={onClose} aria-label="Close">
-          <AiOutlineClose size={24} />
+    <div className="resume-modal" onClick={onClose}>
+      {/* Wrapper stops click-through to backdrop */}
+      <div className="modal-wrapper" onClick={(e) => e.stopPropagation()}>
+      {/* Close button is OUTSIDE the scrollable area so it never scrolls away */}
+        <button className="close modal-close-fixed" onClick={onClose} aria-label="Close">
+          <AiOutlineClose size={20} />
         </button>
-        <div className="content-container">
-          <img src={imageUrl} alt="resume" className="min-image" />
-          <div className="modal-text-container">
-            <p className="modal-resume-name">{name.split(' ')[0]}'s Resume</p>
-            <button className="download-button" onClick={downloadResume}>
-              <AiOutlineDownload size={20} className="download-icon" />
-              Download Resume
-            </button>
+
+        <div className="modal-content">
+          <div className="content-container">
+            <img src={imageUrl} alt="resume" className="min-image" />
+            <div className="modal-text-container">
+              <p className="modal-resume-name">{name.split(' ')[0]}'s Resume</p>
+              <button className="download-button" onClick={downloadResume}>
+                <AiOutlineDownload size={20} className="download-icon" />
+                Download Resume
+              </button>
+            </div>
           </div>
         </div>
       </div>

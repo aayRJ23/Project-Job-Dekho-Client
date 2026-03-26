@@ -1,8 +1,10 @@
+import "./Application.css";
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { Context } from "../../main";
+import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaFileUpload } from "react-icons/fa";
 
 const Application = () => {
   const [name, setName] = useState("");
@@ -41,17 +43,11 @@ const Application = () => {
         formData,
         {
           withCredentials: true,
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+          headers: { "Content-Type": "multipart/form-data" },
         }
       );
-      setName("");
-      setEmail("");
-      setCoverLetter("");
-      setPhone("");
-      setAddress("");
-      setResume(null);
+      setName(""); setEmail(""); setCoverLetter("");
+      setPhone(""); setAddress(""); setResume(null);
       toast.success(data.message);
       navigateTo("/job/getall");
     } catch (error) {
@@ -62,12 +58,8 @@ const Application = () => {
   };
 
   const handleClear = () => {
-    setName("");
-    setEmail("");
-    setCoverLetter("");
-    setPhone("");
-    setAddress("");
-    setResume(null);
+    setName(""); setEmail(""); setCoverLetter("");
+    setPhone(""); setAddress(""); setResume(null);
   };
 
   if (!isAuthorized || (user && user.role === "Employer")) {
@@ -75,71 +67,98 @@ const Application = () => {
   }
 
   return (
-    <section className="application-applicationform">
+    <section className="appform-page">
       {loading && (
-        <div className="loader-applicationform">
-          <div className="spinner-applicationform"></div>
+        <div className="appform-loader">
+          <div className="appform-spinner"></div>
         </div>
       )}
-      <div className="container-applicationform">
-        <h3 className="heading-applicationform">Application Form</h3>
-        <form onSubmit={handleApplication} className="form-applicationform">
-          <label className="label-applicationform">Your Name</label>
-          <input
-            type="text"
-            placeholder="Your Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="input-applicationform"
-          />
-          <label className="label-applicationform">Your Email</label>
-          <input
-            type="email"
-            placeholder="Your Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="input-applicationform"
-          />
-          <label className="label-applicationform">Your Phone Number</label>
-          <input
-            type="number"
-            placeholder="Your Phone Number"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className="input-applicationform"
-          />
-          <label className="label-applicationform">Your Address</label>
-          <input
-            type="text"
-            placeholder="Your Address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            className="input-applicationform"
-          />
-          <label className="label-applicationform">Cover Letter</label>
-          <textarea
-            placeholder="CoverLetter..."
-            value={coverLetter}
-            onChange={(e) => setCoverLetter(e.target.value)}
-            className="textarea-applicationform"
-          />
-          <div className="file-input-applicationform">
-            <label className="file-label-applicationform">Select Resume</label>
+
+      <h1 className="appform-heading">APPLICATION FORM</h1>
+
+      <div className="appform-card">
+        <form onSubmit={handleApplication} className="appform-form">
+
+          <div className="appform-field">
+            <label className="appform-label"><FaUser className="appform-icon" /> Your Name</label>
             <input
-              type="file"
-              accept=".pdf, .jpg, .png"
-              onChange={handleFileChange}
-              className="file-applicationform"
+              type="text"
+              placeholder="Enter your full name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="appform-input"
             />
           </div>
-          <div className="button-group-applicationform">
-            <button type="button" onClick={handleClear} className="clear-button-applicationform">
+
+          <div className="appform-field">
+            <label className="appform-label"><FaEnvelope className="appform-icon" /> Your Email</label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="appform-input"
+            />
+          </div>
+
+          <div className="appform-field">
+            <label className="appform-label"><FaPhone className="appform-icon" /> Phone Number</label>
+            <input
+              type="number"
+              placeholder="Enter your phone number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="appform-input"
+            />
+          </div>
+
+          <div className="appform-field">
+            <label className="appform-label"><FaMapMarkerAlt className="appform-icon" /> Your Address</label>
+            <input
+              type="text"
+              placeholder="Enter your address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              className="appform-input"
+            />
+          </div>
+
+          <div className="appform-field">
+            <label className="appform-label">Cover Letter</label>
+            <textarea
+              placeholder="Write your cover letter here..."
+              value={coverLetter}
+              onChange={(e) => setCoverLetter(e.target.value)}
+              className="appform-textarea"
+              rows={5}
+            />
+          </div>
+
+          <div className="appform-field">
+            <label className="appform-label"><FaFileUpload className="appform-icon" /> Upload Resume</label>
+            <div className="appform-file-wrapper">
+              <input
+                type="file"
+                accept=".pdf, .jpg, .png"
+                onChange={handleFileChange}
+                className="appform-file-input"
+                id="resume-upload"
+              />
+              <label htmlFor="resume-upload" className="appform-file-label">
+                {resume ? resume.name : "Choose file (.pdf / .jpg / .png)"}
+              </label>
+            </div>
+          </div>
+
+          <div className="appform-btn-group">
+            <button type="button" onClick={handleClear} className="appform-btn-clear">
               Clear
             </button>
-            <button type="submit" className="submit-button-applicationform">
+            <button type="submit" className="appform-btn-submit">
               Send Application
             </button>
           </div>
+
         </form>
       </div>
     </section>

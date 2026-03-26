@@ -1,0 +1,195 @@
+/* ================================================
+   Application Form — Job Dekho theme
+   ================================================ */
+
+.appform-page {
+  min-height: 100vh;
+  padding: 2rem 1.5rem 4rem;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+/* Heading */
+.appform-heading {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #f15a29;
+  text-align: center;
+  margin-bottom: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Card wrapper */
+.appform-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.09);
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem 2.4rem;
+}
+
+/* Form layout */
+.appform-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+/* Label */
+.appform-label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #f15a29;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.appform-icon {
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* Inputs */
+.appform-input,
+.appform-textarea {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #333;
+  background: #fafafa;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.appform-input:focus,
+.appform-textarea:focus {
+  border-color: #f15a29;
+  box-shadow: 0 0 0 3px rgba(241, 90, 41, 0.1);
+  background: #fff;
+}
+
+.appform-textarea {
+  resize: vertical;
+}
+
+/* File input */
+.appform-file-wrapper {
+  position: relative;
+}
+
+.appform-file-input {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.appform-file-label {
+  display: block;
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border: 1.5px dashed #f15a29;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: #888;
+  background: #fff8f5;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.appform-file-label:hover {
+  background: #fff0eb;
+  border-color: #e04e22;
+  color: #f15a29;
+}
+
+/* Buttons */
+.appform-btn-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.appform-btn-clear,
+.appform-btn-submit {
+  flex: 1;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.15s;
+}
+
+.appform-btn-clear {
+  background: #f4f4f4;
+  color: #555;
+}
+
+.appform-btn-clear:hover {
+  background: #e8e8e8;
+}
+
+.appform-btn-submit {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.appform-btn-submit:hover {
+  background: #f15a29;
+}
+
+/* Loader overlay */
+.appform-loader {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.appform-spinner {
+  width: 52px;
+  height: 52px;
+  border: 5px solid #f0e6e1;
+  border-top-color: #f15a29;
+  border-radius: 50%;
+  animation: appform-spin 0.75s linear infinite;
+}
+
+@keyframes appform-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .appform-heading {
+    font-size: 1.7rem;
+  }
+
+  .appform-card {
+    padding: 1.4rem 1.2rem;
+  }
+
+  .appform-btn-group {
+    flex-direction: column;
+  }
+}

@@ -1,130 +1,202 @@
+/* ================================================
+   Post Job Page — Job Dekho theme
+   ================================================ */
+
 .job-post-page {
-  padding: 50px 0;
   min-height: 100vh;
+  padding: 2rem 1.5rem 4rem;
+  background-color: #f9f9f9;
 }
 
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  background: white;
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
- 
-h3 {
+/* Page heading */
+.job-post-page h3 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #f15a29;
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 4rem;
-  font-weight: bold;
-  color: #ff7e5f;
+  margin-bottom: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
-form {
+/* Card container */
+.job-post-page .container {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem 2.4rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.09);
+}
+
+/* Form: no border, just spacing */
+.job-post-page form {
   display: flex;
   flex-direction: column;
-  border: 2px solid #ff7e5f;
-  padding: 20px;
-  border-radius: 10px;
+  border: none;
+  padding: 0;
+  gap: 0;
 }
 
+/* Field wrapper */
 .form-wrapper {
-  margin-bottom: 20px;
+  margin-bottom: 1.1rem;
 }
 
 .form-wrapper label {
   display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #ff7e5f;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #f15a29;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
+/* Side-by-side wrapper */
 .wrapper {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  gap: 1.2rem;
+  margin-bottom: 0;
 }
 
-.wrapper input,
-.salary-wrapper select,
-.salary-wrapper input,
-textarea,
+.wrapper .form-wrapper {
+  flex: 1;
+}
+
+/* Inputs, selects, textarea */
 .animated-input,
 .animated-select,
-.animated-textarea {
+.animated-textarea,
+.wrapper input,
+.salary-wrapper select,
+.salary-wrapper input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ff7e5f;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  padding: 0.65rem 1rem;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #333;
+  background: #fafafa;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  margin-bottom: 0;
 }
 
 .animated-input:focus,
 .animated-select:focus,
 .animated-textarea:focus {
-  background-color: rgba(255, 126, 95, 0.1);
-  box-shadow: 0 0 10px rgba(255, 126, 95, 0.5);
+  border-color: #f15a29;
+  box-shadow: 0 0 0 3px rgba(241, 90, 41, 0.1);
+  background: #fff;
 }
 
+.animated-textarea {
+  resize: vertical;
+}
+
+/* Salary section */
 .salary-wrapper {
-  margin-bottom: 20px;
+  margin-bottom: 1.1rem;
 }
 
-.salary-wrapper select,
-.ranged-salary input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ff7e5f;
-  border-radius: 5px;
-  margin-bottom: 10px;
+.salary-wrapper label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #f15a29;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.salary-wrapper select {
+  margin-bottom: 0.8rem;
 }
 
 .salary-message {
-  color: #ff0000;
+  color: #f15a29;
+  font-size: 0.85rem;
+  font-style: italic;
+  margin: 0.3rem 0 0;
 }
 
-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ff7e5f;
-  border-radius: 5px;
-  resize: none;
-}
-
-.button-wrapper {
-  width: 100%;
+.ranged-salary {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 1.2rem;
+}
+
+.ranged-salary .form-wrapper {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* Buttons */
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 0.6rem;
 }
 
 .submit-button,
 .clear-button {
-  margin-left: 20px;
-  padding: 15px;
+  padding: 0.65rem 1.8rem;
   border: none;
-  border-radius: 30px; /* Increased border radius for capsule-like buttons */
-  background: linear-gradient(to right, #66a6ff, #89f7fe);
-  color: black;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  font-size: 16px;
-  width: 20%; /* Increased width of buttons */
-  text-align: center;
+  transition: background 0.25s;
 }
 
 .clear-button {
-  background: red;
-  color: white;
+  background: #f4f4f4;
+  color: #555;
+  margin-left: 0;
 }
 
 .clear-button:hover {
-  background: darkred;
+  background: #e8e8e8;
+}
+
+.submit-button {
+  background: #1a1a2e;
+  color: #fff;
+  margin-left: 0;
+  width: auto;
 }
 
 .submit-button:hover {
-  background: linear-gradient(to right, #89f7fe, #66a6ff);
-  color: white;
+  background: #f15a29;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .job-post-page h3 {
+    font-size: 1.7rem;
+  }
+
+  .job-post-page .container {
+    padding: 1.4rem 1.2rem;
+  }
+
+  .wrapper,
+  .ranged-salary {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .button-wrapper {
+    flex-direction: column;
+  }
+
+  .submit-button,
+  .clear-button {
+    width: 100%;
+    text-align: center;
+  }
 }
