@@ -409,3 +409,192 @@
 
 
 
+/* ─── Paste these styles at the BOTTOM of your existing MyApplications.css ─── */
+
+/* ── Interview Scheduling Popup ─────────────────────────────────────────── */
+.schedule-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.schedule-popup {
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.schedule-popup h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 4px;
+}
+
+.schedule-subtitle {
+  color: #888;
+  font-size: 0.88rem;
+  margin: 0 0 8px;
+}
+
+.schedule-popup label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 2px;
+}
+
+.schedule-popup input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+.schedule-popup input:focus {
+  outline: none;
+  border-color: #6c63ff;
+}
+
+.schedule-popup-btns {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.schedule-send-btn {
+  flex: 1;
+  padding: 11px;
+  background: linear-gradient(135deg, #6c63ff, #4f46e5);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.schedule-send-btn:hover { opacity: 0.9; }
+
+.schedule-cancel-btn {
+  padding: 11px 20px;
+  background: #f0f0f0;
+  color: #555;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.schedule-cancel-btn:hover { background: #e0e0e0; }
+
+/* ── Interview Info Card (inside application card) ──────────────────────── */
+.interview-info-card {
+  background: #eef6ff;
+  border-left: 4px solid #4f46e5;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-top: 10px;
+  font-size: 0.88rem;
+  color: #333;
+}
+.interview-info-card p { margin: 4px 0; }
+.interview-info-card a { color: #4f46e5; font-weight: 600; text-decoration: none; }
+.interview-info-card a:hover { text-decoration: underline; }
+
+/* ── Status Timeline (Job Seeker) ───────────────────────────────────────── */
+.status-timeline {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  margin: 16px 0 8px;
+  flex-wrap: wrap;
+}
+
+.timeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  min-width: 60px;
+}
+
+.timeline-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: #e0e0e0;
+  color: #888;
+  z-index: 1;
+  border: 2px solid #ccc;
+  transition: all 0.3s;
+}
+
+.timeline-step.done .timeline-dot {
+  background: #28a745;
+  color: #fff;
+  border-color: #28a745;
+}
+
+.timeline-step.current .timeline-dot {
+  background: #4f46e5;
+  color: #fff;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.2);
+}
+
+.timeline-label {
+  font-size: 0.68rem;
+  text-align: center;
+  margin-top: 6px;
+  color: #888;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.timeline-step.done .timeline-label,
+.timeline-step.current .timeline-label {
+  color: #333;
+  font-weight: 600;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: #e0e0e0;
+  z-index: 0;
+}
+.timeline-line.done { background: #28a745; }
+
+/* ── Accepted button (disabled state after scheduling) ───────────────────── */
+.accepted-btn {
+  background: #d4edda;
+  color: #155724;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: default;
+  width: 100%;
+}

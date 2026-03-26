@@ -7,7 +7,6 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { motion } from "framer-motion";
 import { FiX } from "react-icons/fi";
 import "./Navbar.css";
-
 import logo from "./jobdekhologo-nav.png";
 
 const Navbar = ({ unreadCount, setUnreadCount }) => {
@@ -32,20 +31,12 @@ const Navbar = ({ unreadCount, setUnreadCount }) => {
   };
 
   useEffect(() => {
-    if (!isAuthorized) {
-      setShow(false);
-    }
+    if (!isAuthorized) setShow(false);
   }, [isAuthorized]);
 
   const sidebarVariants = {
-    open: {
-      x: 0,
-      transition: { type: "spring", stiffness: 260, damping: 20 },
-    },
-    closed: {
-      x: "-100%",
-      transition: { type: "spring", stiffness: 260, damping: 20 },
-    },
+    open: { x: 0, transition: { type: "spring", stiffness: 260, damping: 20 } },
+    closed: { x: "-100%", transition: { type: "spring", stiffness: 260, damping: 20 } },
   };
 
   return (
@@ -64,38 +55,34 @@ const Navbar = ({ unreadCount, setUnreadCount }) => {
           <img src={logo} alt="JobDekho" className="sidebarLogo" />
           <ul className="sidebarMenu">
             <li>
-              <Link to={"/"} onClick={() => setShow(false)}>
-                HOME
-              </Link>
+              <Link to={"/"} onClick={() => setShow(false)}>HOME</Link>
             </li>
             <li>
-              <Link to={"/job/getall"} onClick={() => setShow(false)}>
-                ALL JOBS
-              </Link>
+              <Link to={"/job/getall"} onClick={() => setShow(false)}>ALL JOBS</Link>
             </li>
             <li>
               <Link to={"/applications/me"} onClick={() => setShow(false)}>
-                {user && user.role === "Employer"
-                  ? "APPLICANT'S APPLICATIONS"
-                  : "MY APPLICATIONS"}
+                {user && user.role === "Employer" ? "APPLICANT'S APPLICATIONS" : "MY APPLICATIONS"}
               </Link>
             </li>
-            {user && user.role === "Employer" ? (
+            {user && user.role === "Employer" && (
               <>
                 <li>
-                  <Link to={"/job/post"} onClick={() => setShow(false)}>
-                    POST NEW JOB
-                  </Link>
+                  <Link to={"/job/post"} onClick={() => setShow(false)}>POST NEW JOB</Link>
                 </li>
                 <li>
-                  <Link to={"/job/me"} onClick={() => setShow(false)}>
-                    VIEW YOUR JOBS
-                  </Link>
+                  <Link to={"/job/me"} onClick={() => setShow(false)}>VIEW YOUR JOBS</Link>
                 </li>
               </>
-            ) : null}
+            )}
 
-            {/* ---- NOTIFICATIONS — no icon, centred text like all other items ---- */}
+            {/* NEW: Interview Dashboard — shown to both roles */}
+            <li>
+              <Link to={"/interview-dashboard"} onClick={() => setShow(false)}>
+                INTERVIEW DASHBOARD
+              </Link>
+            </li>
+
             <li>
               <Link
                 to={"/notifications"}
@@ -110,11 +97,8 @@ const Navbar = ({ unreadCount, setUnreadCount }) => {
                 )}
               </Link>
             </li>
-
             <li>
-              <button className="logoutButton" onClick={handleLogout}>
-                LOGOUT
-              </button>
+              <button className="logoutButton" onClick={handleLogout}>LOGOUT</button>
             </li>
           </ul>
         </div>

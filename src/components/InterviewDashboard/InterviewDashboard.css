@@ -1,0 +1,164 @@
+/* ── Page Layout ─────────────────────────────────────────────────────────── */
+.idash-page {
+  min-height: 100vh;
+  padding: 100px 20px 60px;
+  background: #f5f7fa;
+}
+
+.idash-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+
+.idash-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 40px;
+  font-size: 0.95rem;
+}
+
+.idash-loading,
+.idash-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+  font-size: 1.1rem;
+}
+
+/* ── Table ───────────────────────────────────────────────────────────────── */
+.idash-table-wrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.idash-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.idash-table thead {
+  background: linear-gradient(135deg, #6c63ff, #4f46e5);
+  color: #fff;
+}
+
+.idash-table thead th {
+  padding: 16px 18px;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.idash-table tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s;
+}
+
+.idash-table tbody tr:hover {
+  background: #f9f9ff;
+}
+
+.idash-table tbody td {
+  padding: 14px 18px;
+  vertical-align: middle;
+  color: #333;
+}
+
+.idash-row.row-selected {
+  background: #f0fff4 !important;
+}
+.idash-row.row-not-selected {
+  background: #fff5f5 !important;
+}
+
+.applicant-name {
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.app-id-cell {
+  font-family: monospace;
+  color: #888;
+  font-size: 0.82rem;
+}
+
+/* ── Meet Link ───────────────────────────────────────────────────────────── */
+.meet-link {
+  display: inline-block;
+  background: #e8f4fd;
+  color: #1a73e8;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.meet-link:hover {
+  background: #c8e6fb;
+}
+
+/* ── Verdict Badges (seeker view) ────────────────────────────────────────── */
+.verdict-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.verdict-badge.selected { background: #d4edda; color: #155724; }
+.verdict-badge.not-selected { background: #f8d7da; color: #721c24; }
+.verdict-badge.pending { background: #fff3cd; color: #856404; }
+
+/* ── Verdict Action Buttons (employer view) ──────────────────────────────── */
+.verdict-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.verdict-btn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.select-btn {
+  background: #28a745;
+  color: #fff;
+}
+.select-btn:hover { background: #218838; }
+
+.reject-btn {
+  background: #dc3545;
+  color: #fff;
+}
+.reject-btn:hover { background: #c82333; }
+
+.verdict-btn.selected-btn {
+  background: #d4edda;
+  color: #155724;
+  cursor: default;
+  width: 100%;
+}
+.verdict-btn.not-selected-btn {
+  background: #f8d7da;
+  color: #721c24;
+  cursor: default;
+  width: 100%;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .idash-title { font-size: 1.4rem; }
+  .idash-table thead th,
+  .idash-table tbody td { padding: 10px 12px; font-size: 0.8rem; }
+}

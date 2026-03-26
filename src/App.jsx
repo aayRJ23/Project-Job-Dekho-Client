@@ -19,17 +19,14 @@ import MyJobs from "./components/Job/MyJobs";
 import Chatbot from "./components/Chatbot/Chatbot";
 import Details from "./components/Details/Details";
 import Notifications from "./components/Notifications/Notifications";
+import InterviewDashboard from "./components/InterviewDashboard/InterviewDashboard"; // NEW
 import socket from "./socket";
 
 const App = () => {
   const { isAuthorized, setIsAuthorized, setUser, user } = useContext(Context);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [liveNotifications, setLiveNotifications] = useState(null);
 
-  // Shared live notifications list — updated by socket so Notifications page
-  // can consume it without a re-fetch on every new message.
-  const [liveNotifications, setLiveNotifications] = useState(null); // null = not yet loaded
-
-  // Fetch user on load / auth change
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -39,32 +36,21 @@ const App = () => {
         );
         setUser(response.data.user);
         setIsAuthorized(true);
-      } catch (error) {
+      } catch {
         setIsAuthorized(false);
       }
     };
     fetchUser();
   }, [isAuthorized, setUser, setIsAuthorized]);
 
-  // Connect socket and register user once authorized
   useEffect(() => {
     if (isAuthorized && user && user._id) {
-      if (!socket.connected) {
-        socket.connect();
-      }
-      // Re-register on every reconnect too
+      if (!socket.connected) socket.connect();
       socket.emit("register", user._id);
 
-      const handleReconnect = () => {
-        socket.emit("register", user._id);
-      };
-
-      // Listen for incoming real-time notifications
+      const handleReconnect = () => socket.emit("register", user._id);
       const handleNewNotification = (notification) => {
-        // Bump unread badge count
         setUnreadCount((prev) => prev + 1);
-
-        // Prepend the live notification so the Notifications page updates instantly
         setLiveNotifications((prev) =>
           prev ? [notification, ...prev] : [notification]
         );
@@ -72,28 +58,21 @@ const App = () => {
 
       socket.on("new_notification", handleNewNotification);
       socket.on("reconnect", handleReconnect);
-
       return () => {
         socket.off("new_notification", handleNewNotification);
         socket.off("reconnect", handleReconnect);
       };
     } else {
-      // Disconnect socket on logout
-      if (socket.connected) {
-        socket.disconnect();
-      }
+      if (socket.connected) socket.disconnect();
       setUnreadCount(0);
       setLiveNotifications(null);
     }
   }, [isAuthorized, user]);
 
-  // Fetch initial unread count + notification list from DB when user logs in
   useEffect(() => {
     if (isAuthorized) {
       axios
-        .get("http://localhost:4000/api/v1/notification/getall", {
-          withCredentials: true,
-        })
+        .get("http://localhost:4000/api/v1/notification/getall", { withCredentials: true })
         .then((res) => {
           setUnreadCount(res.data.unreadCount);
           setLiveNotifications(res.data.notifications);
@@ -126,6 +105,8 @@ const App = () => {
               />
             }
           />
+          {/* NEW: Interview Dashboard — accessible to both roles */}
+          <Route path="/interview-dashboard" element={<InterviewDashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
